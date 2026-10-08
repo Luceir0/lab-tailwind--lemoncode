@@ -1,1 +1,414 @@
 @import "tailwindcss";
+
+/* daisyUI: usamos sus temas light y dark, pero con los colores de Memora.
+   El tema se elige con data-theme en <html>, igual que nuestros tokens. */
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --prefersdark;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: var(--memora-brand-600);
+  --color-primary-content: #ffffff;
+  --color-base-100: var(--memora-bg-surface);
+  --color-base-200: var(--memora-bg-page);
+  --color-base-300: var(--memora-bg-elevated);
+  --color-base-content: var(--memora-text-primary);
+  --radius-field: var(--memora-radius-md); /* botones, inputs */
+  --radius-box: var(--memora-radius-2xl); /* cards, modales */
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  prefersdark: true;
+  --color-primary: var(--memora-brand-600);
+  --color-primary-content: #ffffff;
+  --color-base-100: var(--memora-bg-surface);
+  --color-base-200: var(--memora-bg-page);
+  --color-base-300: var(--memora-bg-elevated);
+  --color-base-content: var(--memora-text-primary);
+  --radius-field: var(--memora-radius-md);
+  --radius-box: var(--memora-radius-2xl);
+}
+
+/* 1. VARIABLES ORIGINALES */
+:root {
+  color-scheme: light;
+  --memora-footer-bg: #080f19;
+  --memora-footer-text: #f8fafc;
+  /* ------------------------------------------------------------------------
+     1. TIPOGRAFÍA (FONT FAMILIES & SCALES)
+     ------------------------------------------------------------------------ */
+  --memora-font-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  --memora-font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Tamaños de fuente */
+  --memora-text-2xs: 0.6875rem; /* 11px - Etiquetas pequeñas, badges micro */
+  --memora-text-xs: 0.75rem; /* 12px - Badges, metadatos, tags */
+  --memora-text-sm: 0.875rem; /* 14px - Descripciones, botones secundarios */
+  --memora-text-base: 1rem; /* 16px - Texto base / body */
+  --memora-text-lg: 1.125rem; /* 18px - Subtítulos, leads */
+  --memora-text-xl: 1.25rem; /* 20px - Títulos de tarjeta */
+  --memora-text-2xl: 1.5rem; /* 24px - Subtítulos de sección */
+  --memora-text-3xl: 1.875rem; /* 30px - Títulos móviles */
+  --memora-text-4xl: 2.25rem; /* 36px - Encabezados */
+  --memora-text-5xl: 2.625rem; /* 42px - Títulos de sección desktop */
+  --memora-text-6xl: 3.5rem; /* 56px - Hero headline display */
+
+  /* Pesos tipográficos */
+  --memora-font-normal: 400;
+  --memora-font-medium: 500;
+  --memora-font-semibold: 600;
+  --memora-font-bold: 700;
+  --memora-font-extrabold: 800;
+
+  /* Alturas de línea (Line-height) */
+  --memora-leading-none: 1;
+  --memora-leading-tight: 1.15;
+  --memora-leading-snug: 1.35;
+  --memora-leading-normal: 1.5;
+  --memora-leading-relaxed: 1.625;
+
+  /* Espaciado entre letras */
+  --memora-tracking-tight: -0.025em;
+  --memora-tracking-normal: 0em;
+  --memora-tracking-wide: 0.05em;
+  --memora-tracking-wider: 0.075em;
+
+  /* ------------------------------------------------------------------------
+     2. PALETA DE MARCA PRIMARIA (VIOLETA / ÍNDIGO)
+     ------------------------------------------------------------------------ */
+  --memora-brand-50: #f0efff;
+  --memora-brand-100: #e2dfff;
+  --memora-brand-200: #c8c3ff;
+  --memora-brand-300: #aaa2ff;
+  --memora-brand-400: #8980fa;
+  --memora-brand-500: #6c63ff;
+  --memora-brand-600: #584fe5; /* Color principal de botones y acentos */
+  --memora-brand-700: #463ec1; /* Hover de botones */
+  --memora-brand-800: #39349a;
+  --memora-brand-900: #302d78;
+
+  /* ------------------------------------------------------------------------
+     3. COLORES DE ACENTO FOTOGRÁFICO
+     ------------------------------------------------------------------------ */
+  /* Rosa / Celebraciones */
+  --memora-accent-pink: #ec4899;
+  --memora-accent-pink-hover: #db2777;
+  --memora-accent-pink-soft: #fff0f7;
+  --memora-accent-pink-border: #ffd8eb;
+
+  /* Melocotón / Calidez */
+  --memora-accent-peach: #f7935c;
+  --memora-accent-peach-hover: #ea7f44;
+  --memora-accent-peach-soft: #fff8f3;
+  --memora-accent-peach-border: #ffe4d1;
+
+  /* Verde Menta / Éxito & Privacidad */
+  --memora-accent-mint: #10b981;
+  --memora-accent-mint-soft: #eafbf5;
+  --memora-accent-mint-border: #cef6e8;
+
+  /* ------------------------------------------------------------------------
+     4. VARIABLES SEMÁNTICAS — MODO CLARO (LIGHT MODE)
+     ------------------------------------------------------------------------ */
+  --memora-bg-page: #f8fafc; /* Slate 50 - Fondo global */
+  --memora-bg-surface: #ffffff; /* Fondo de tarjetas */
+  --memora-bg-elevated: #f1f5f9; /* Sub-tarjetas, inputs, badges */
+  --memora-bg-subtle: #f8fafc; /* Contenedores secundarios */
+
+  /* Textos */
+  --memora-text-primary: #0f172a; /* Slate 900 - Títulos principales */
+  --memora-text-secondary: #475569; /* Slate 600 - Párrafos y subtítulos */
+  --memora-text-muted: #94a3b8; /* Slate 400 - Metadatos, fechas, iconos */
+  --memora-text-inverse: #ffffff;
+
+  /* Bordes & Divisores */
+  --memora-border-subtle: #e2e8f0; /* Slate 200 */
+  --memora-border-strong: #cbd5e1; /* Slate 300 */
+
+  /* Glassmorphism & Header */
+  --memora-glass-bg: rgba(255, 255, 255, 0.82);
+  --memora-glass-border: rgba(226, 232, 240, 0.8);
+  --memora-glass-blur: 16px;
+
+  /* Sombras (Shadows) */
+  --memora-shadow-2xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --memora-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  --memora-shadow-sm: 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+  --memora-shadow-md: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
+  --memora-shadow-lg: 0 20px 32px -8px rgba(15, 23, 42, 0.1);
+  --memora-shadow-xl: 0 24px 48px -12px rgba(15, 23, 42, 0.14);
+  --memora-shadow-brand: 0 12px 24px -4px rgba(88, 79, 229, 0.28);
+
+  /* ------------------------------------------------------------------------
+     5. SISTEMA DE RADIOS (BORDER RADIUS)
+     ------------------------------------------------------------------------ */
+  --memora-radius-xs: 0.375rem; /* 6px */
+  --memora-radius-sm: 0.5rem; /* 8px */
+  --memora-radius-md: 0.75rem; /* 12px - Inputs, botones estándar */
+  --memora-radius-lg: 1rem; /* 16px - Tarjetas pequeñas, modales micro */
+  --memora-radius-xl: 1.25rem; /* 20px - Bloques Bento secundarios */
+  --memora-radius-2xl: 1.5rem; /* 24px - Tarjetas de pasos, Bento grande */
+  --memora-radius-3xl: 2rem; /* 32px - Contenedores principales */
+  --memora-radius-full: 9999px; /* Pills, badges circulares */
+
+  /* ------------------------------------------------------------------------
+     6. ESCALA DE ESPACIADO (SPACING SCALE)
+     ------------------------------------------------------------------------ */
+  --memora-space-1: 0.25rem; /* 4px */
+  --memora-space-2: 0.5rem; /* 8px */
+  --memora-space-3: 0.75rem; /* 12px */
+  --memora-space-4: 1rem; /* 16px */
+  --memora-space-5: 1.25rem; /* 20px */
+  --memora-space-6: 1.5rem; /* 24px */
+  --memora-space-8: 2rem; /* 32px */
+  --memora-space-10: 2.5rem; /* 40px */
+  --memora-space-12: 3rem; /* 48px */
+  --memora-space-16: 4rem; /* 64px */
+  --memora-space-20: 5rem; /* 80px  - Padding vertical secciones móvil */
+  --memora-space-28: 7rem; /* 112px - Padding vertical secciones desktop */
+
+  /* Layout width */
+  --memora-container-max-w: 80rem; /* 1280px */
+  --memora-header-height: 5rem; /* 80px */
+
+  /* ------------------------------------------------------------------------
+     7. TRANSICIONES Y Z-INDEX
+     ------------------------------------------------------------------------ */
+  --memora-ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --memora-duration-fast: 150ms;
+  --memora-duration-normal: 250ms;
+  --memora-duration-slow: 350ms;
+
+  --memora-z-header: 50;
+  --memora-z-sidenav: 40;
+  --memora-z-modal: 60;
+  --memora-z-toast: 70;
+}
+
+/* TOKENS: nombres que Tailwind transforma en clases.
+   Ejemplo: --color-page genera bg-page y --color-fg genera text-fg.
+   fg = foreground (texto e iconos), el par de bg = background.
+   No usamos primary/secondary para texto: en daisyUI son colores de marca.
+   El bloque theme pertenece a la capa theme; no hace falta anidarlo en @layer. */
+@theme {
+  --font-sans: var(--memora-font-sans);
+  --font-mono: var(--memora-font-mono);
+  --text-2xs: var(--memora-text-2xs);
+  --text-xs: var(--memora-text-xs);
+  --text-sm: var(--memora-text-sm);
+  --text-base: var(--memora-text-base);
+  --text-lg: var(--memora-text-lg);
+  --text-xl: var(--memora-text-xl);
+  --text-2xl: var(--memora-text-2xl);
+  --text-3xl: var(--memora-text-3xl);
+  --text-4xl: var(--memora-text-4xl);
+  --text-5xl: var(--memora-text-5xl);
+  --text-6xl: var(--memora-text-6xl);
+  --font-weight-normal: var(--memora-font-normal);
+  --font-weight-medium: var(--memora-font-medium);
+  --font-weight-semibold: var(--memora-font-semibold);
+  --font-weight-bold: var(--memora-font-bold);
+  --font-weight-extrabold: var(--memora-font-extrabold);
+  --leading-none: var(--memora-leading-none);
+  --leading-tight: var(--memora-leading-tight);
+  --leading-snug: var(--memora-leading-snug);
+  --leading-normal: var(--memora-leading-normal);
+  --leading-relaxed: var(--memora-leading-relaxed);
+  --tracking-tight: var(--memora-tracking-tight);
+  --tracking-normal: var(--memora-tracking-normal);
+  --tracking-wide: var(--memora-tracking-wide);
+  --tracking-wider: var(--memora-tracking-wider);
+  --color-brand-50: var(--memora-brand-50);
+  --color-brand-100: var(--memora-brand-100);
+  --color-brand-200: var(--memora-brand-200);
+  --color-brand-300: var(--memora-brand-300);
+  --color-brand-400: var(--memora-brand-400);
+  --color-brand-500: var(--memora-brand-500);
+  --color-brand-600: var(--memora-brand-600);
+  --color-brand-700: var(--memora-brand-700);
+  --color-brand-800: var(--memora-brand-800);
+  --color-brand-900: var(--memora-brand-900);
+  --color-accent-pink: var(--memora-accent-pink);
+  --color-accent-pink-hover: var(--memora-accent-pink-hover);
+  --color-accent-pink-soft: var(--memora-accent-pink-soft);
+  --color-accent-pink-border: var(--memora-accent-pink-border);
+  --color-accent-peach: var(--memora-accent-peach);
+  --color-accent-peach-hover: var(--memora-accent-peach-hover);
+  --color-accent-peach-soft: var(--memora-accent-peach-soft);
+  --color-accent-peach-border: var(--memora-accent-peach-border);
+  --color-accent-mint: var(--memora-accent-mint);
+  --color-accent-mint-soft: var(--memora-accent-mint-soft);
+  --color-accent-mint-border: var(--memora-accent-mint-border);
+  --color-page: var(--memora-bg-page);
+  --color-surface: var(--memora-bg-surface);
+  --color-elevated: var(--memora-bg-elevated);
+  --color-subtle: var(--memora-bg-subtle);
+  --color-fg: var(--memora-text-primary);
+  --color-fg-secondary: var(--memora-text-secondary);
+  --color-fg-muted: var(--memora-text-muted);
+  --color-fg-inverse: var(--memora-text-inverse);
+  --color-outline: var(--memora-border-subtle);
+  --color-outline-strong: var(--memora-border-strong);
+  --color-glass: var(--memora-glass-bg);
+  --color-glass-border: var(--memora-glass-border);
+  --blur-glass: var(--memora-glass-blur);
+  --shadow-2xs: var(--memora-shadow-2xs);
+  --shadow-xs: var(--memora-shadow-xs);
+  --shadow-sm: var(--memora-shadow-sm);
+  --shadow-md: var(--memora-shadow-md);
+  --shadow-lg: var(--memora-shadow-lg);
+  --shadow-xl: var(--memora-shadow-xl);
+  --shadow-brand: var(--memora-shadow-brand);
+  --radius-xs: var(--memora-radius-xs);
+  --radius-sm: var(--memora-radius-sm);
+  --radius-md: var(--memora-radius-md);
+  --radius-lg: var(--memora-radius-lg);
+  --radius-xl: var(--memora-radius-xl);
+  --radius-2xl: var(--memora-radius-2xl);
+  --radius-3xl: var(--memora-radius-3xl);
+  --radius-full: var(--memora-radius-full);
+  --spacing-1: var(--memora-space-1);
+  --spacing-2: var(--memora-space-2);
+  --spacing-3: var(--memora-space-3);
+  --spacing-4: var(--memora-space-4);
+  --spacing-5: var(--memora-space-5);
+  --spacing-6: var(--memora-space-6);
+  --spacing-8: var(--memora-space-8);
+  --spacing-10: var(--memora-space-10);
+  --spacing-12: var(--memora-space-12);
+  --spacing-16: var(--memora-space-16);
+  --spacing-20: var(--memora-space-20);
+  --spacing-28: var(--memora-space-28);
+  --container-content: var(--memora-container-max-w);
+  --spacing-header: var(--memora-header-height);
+  --ease-standard: var(--memora-ease-standard);
+  --radius-card: var(--memora-radius-lg);
+  --color-footer: var(--memora-footer-bg);
+  --color-footer-text: var(--memora-footer-text);
+}
+
+/* Modo oscuro: añade class="dark" o data-theme="dark" al <html>.
+   Se aplica en la raíz para que el bloque theme resuelva los valores de ese modo. */
+:root.dark,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  /* Superficies oscuras con matiz azul noche / grafito fotográfico */
+  --memora-bg-page: #080f19; /* Fondo negro azulado profundo */
+  --memora-bg-surface: #111b27; /* Superficie de tarjetas */
+  --memora-bg-elevated: #172332; /* Sub-tarjetas, contenedores interactivos */
+  --memora-bg-subtle: #1b2939; /* Píldoras y badges */
+
+  /* Textos modo oscuro */
+  --memora-text-primary: #f8fafc; /* Slate 50 */
+  --memora-text-secondary: #cbd5e1; /* Slate 300 */
+  --memora-text-muted: #64748b; /* Slate 500 */
+  --memora-text-inverse: #0f172a;
+
+  /* Bordes oscuros */
+  --memora-border-subtle: #223347;
+  --memora-border-strong: #263648;
+
+  /* Glassmorphism oscuro */
+  --memora-glass-bg: rgba(8, 15, 25, 0.85);
+  --memora-glass-border: rgba(38, 54, 72, 0.75);
+
+  /* Sombras y resplandores nocturnos */
+  --memora-shadow-sm: 0 4px 12px -2px rgba(0, 0, 0, 0.4);
+  --memora-shadow-md: 0 12px 24px -6px rgba(0, 0, 0, 0.5);
+  --memora-shadow-lg: 0 20px 32px -8px rgba(0, 0, 0, 0.6);
+  --memora-shadow-brand: 0 12px 28px -4px rgba(88, 79, 229, 0.4);
+
+  /* Ajuste de colores pastel en modo oscuro */
+  --memora-accent-pink-soft: #2b1b29;
+  --memora-accent-pink-border: #3d2338;
+  --memora-accent-peach-soft: #2b201b;
+  --memora-accent-peach-border: #3d2a20;
+  --memora-accent-mint-soft: #0f2720;
+  --memora-accent-mint-border: #1b3d32;
+}
+
+/* 3. CAPAS: orden de prioridad del CSS. */
+@layer theme, base, components, utilities;
+
+@layer theme {
+  /* Los tokens del bloque theme ya pertenecen a esta capa. */
+}
+
+/* ESTILOS GENERALES */
+@layer base {
+  body {
+    @apply bg-page font-sans text-fg;
+  }
+}
+
+/* COMPONENTES REUTILIZABLES */
+@layer components {
+  .container-content {
+    @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-200
+           bg-brand-100 px-3 py-1 text-2xs font-semibold uppercase
+           tracking-wider text-brand-700;
+  }
+
+  .pill::before {
+    @apply size-1.5 shrink-0 rounded-full bg-current;
+    content: "";
+  }
+
+  .section-header {
+    @apply mx-auto max-w-2xl text-center;
+  }
+  .section-header h2 {
+    @apply mt-4 text-3xl font-bold tracking-tight lg:text-5xl;
+  }
+  .section-header p {
+    @apply mt-4 text-fg-secondary;
+  }
+
+  .surface-card {
+    @apply rounded-card border border-outline bg-surface p-6 shadow-sm;
+  }
+
+  .icon-box {
+    @apply grid size-10 place-items-center rounded-md;
+  }
+  .icon-box--brand {
+    @apply bg-brand-50 text-brand-600 dark:bg-brand-900/40;
+  }
+  .icon-box--pink {
+    @apply bg-accent-pink-soft text-accent-pink;
+  }
+  .icon-box--peach {
+    @apply bg-accent-peach-soft text-accent-peach;
+  }
+  .icon-box--mint {
+    @apply bg-accent-mint-soft text-accent-mint;
+  }
+}
+
+/* UTILIDADES PROPIAS: las clases de Tailwind también pertenecen a esta capa. */
+@layer utilities {
+  .section-spacing {
+    padding-block: var(--memora-space-20);
+  }
+
+  @media (min-width: 64rem) {
+    .section-spacing {
+      padding-block: var(--memora-space-28);
+    }
+  }
+}
+
+/* Activa las clases dark: con el mismo modo elegido en <html>. */
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));

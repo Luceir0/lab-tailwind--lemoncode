@@ -1,14 +1,39 @@
 <!doctype html>
-<html lang="en">
+<html lang="es" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <title>lab-tailwind--lucia</title>
   </head>
-  <body>
+  <body class="bg-page font-sans text-fg">
     <main class="p-8">
-      <h1 class="text-3xl font-bold text-emerald-600">Mi proyecto</h1>
+      <section class="section-spacing">
+        <div class="container-content">
+          <header class="section-header">
+            <span class="pill">Vuestra cápsula del tiempo privada</span>
+            <h2>
+              Todos vuestros recuerdos,
+              <span class="text-brand-600">por fin, en el mismo lugar.</span>
+            </h2>
+            <p>
+              Crea un espacio privado con la gente que te importa, y guardad
+              juntos los recuerdos que no queréis perder.
+            </p>
+            <p>Sin algoritmos, sin muros públicos, y con calidad original.</p>
+          </header>
+          <div
+            id="features"
+            class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          ></div>
+        </div>
+      </section>
     </main>
     <script type="module" src="/src/main.js"></script>
   </body>
