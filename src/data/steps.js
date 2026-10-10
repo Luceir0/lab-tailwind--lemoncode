@@ -1,4 +1,4 @@
-// Sección "Cómo funciona". tone = color del círculo con el número.
+// Pasos de "Cómo funciona" (stepCard). tone: brand | pink | peach | mint
 export const steps = [
   {
     tone: "brand",
@@ -6,7 +6,7 @@ export const steps = [
     text: "Configura tu perfil en unos segundos.",
   },
   {
-    tone: "brand",
+    tone: "peach",
     title: "Crea un círculo",
     text: "Ponle un nombre y decide quién puede formar parte.",
   },

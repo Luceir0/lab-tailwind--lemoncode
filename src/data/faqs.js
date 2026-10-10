@@ -1,5 +1,4 @@
-// Sección "Preguntas". Solo la primera respuesta sale en el diseño;
-// las demás son textos provisionales para revisar.
+// Preguntas frecuentes (faqItem). open: abierta al cargar
 export const faqs = [
   {
     question: "¿Quién puede ver mis fotografías?",

@@ -1,4 +1,4 @@
-// Sección "Funciones". tone = color del icon box (brand, pink, peach, mint).
+// Funciones (featureCard). tone: brand | pink | peach | mint
 export const features = [
   {
     tone: "brand",

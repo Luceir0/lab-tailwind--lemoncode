@@ -2,39 +2,658 @@
 <html lang="es" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
       rel="stylesheet"
     />
-    <title>lab-tailwind--lucia</title>
+    <title>Memora landing page</title>
   </head>
-  <body class="bg-page font-sans text-fg">
-    <main class="p-8">
-      <section class="section-spacing">
-        <div class="container-content">
-          <header class="section-header">
-            <span class="pill">Vuestra cápsula del tiempo privada</span>
-            <h2>
-              Todos vuestros recuerdos,
-              <span class="text-brand-600">por fin, en el mismo lugar.</span>
-            </h2>
+  <body>
+    <!-- Header -->
+    <header class="site-header">
+      <nav class="site-nav container-content" aria-label="Principal">
+        <a href="#top" class="logo">
+          <img src="/logo.svg" alt="" class="size-9" />
+          memora<span class="logo__dot" aria-hidden="true"></span>
+        </a>
+
+        <!-- Enlaces -->
+        <ul id="site-menu" class="site-nav__links">
+          <li><a href="#top">Inicio</a></li>
+          <li><a href="#funciones">Funciones</a></li>
+          <li><a href="#recuerdos">Recuerdos</a></li>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#precios">Precios</a></li>
+          <li><a href="#preguntas">Preguntas</a></li>
+        </ul>
+
+        <div class="site-nav__actions">
+          <!-- Cambio de tema -->
+          <button
+            type="button"
+            id="theme-toggle"
+            class="btn btn-ghost btn-circle btn-sm"
+            aria-label="Modo oscuro"
+            aria-pressed="false"
+          >
+            <!-- Luna en modo claro -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="size-5 dark:hidden"
+              aria-hidden="true"
+            >
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+            </svg>
+            <!-- Sol en modo oscuro -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              class="hidden size-5 dark:block"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+              />
+            </svg>
+          </button>
+
+          <a href="#" class="btn btn-ghost hidden text-base sm:inline-flex"
+            >Iniciar sesión</a
+          >
+
+          <a href="#precios" class="btn btn-primary text-base shadow-brand">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="size-4"
+              aria-hidden="true"
+            >
+              <circle cx="9" cy="8" r="4" />
+              <path d="M2 21a7 7 0 0 1 14 0M19 8v6M16 11h6" />
+            </svg>
+            <span class="sr-only sm:not-sr-only">Crea tu cuenta</span>
+          </a>
+
+          <!-- Menú hamburguesa -->
+          <button
+            type="button"
+            id="menu-toggle"
+            class="group btn btn-ghost btn-circle btn-sm nav:hidden"
+            aria-label="Menú"
+            aria-expanded="false"
+            aria-controls="site-menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              class="size-5 group-aria-expanded:hidden"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              class="hidden size-5 group-aria-expanded:block"
+              aria-hidden="true"
+            >
+              <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="p-4 lg:p-8">
+      <!-- Hero -->
+      <section id="inicio" class="container-content section-hero">
+        <div class="section-hero--left motion-safe:animate-fade-up">
+          <span class="pill">Vuestra cápsula del tiempo privada</span>
+          <h1>
+            Todos vuestros recuerdos,
+            <span class="text-brand-600">por fin, en el mismo lugar.</span>
+          </h1>
+          <p>
+            Crea un espacio privado con la gente que te importa, y guardad
+            juntos los recuerdos que no queréis perder.
+          </p>
+          <p class="mt-2">
+            Sin algoritmos, sin muros públicos, y con calidad original.
+          </p>
+
+          <!-- Botones -->
+          <div class="hero-actions">
+            <a href="#precios" class="btn btn-primary shadow-brand lg:btn-lg">
+              Crea tu cuenta
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="size-4"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+            <a
+              href="#como-funciona"
+              class="btn lg:btn-lg [--btn-color:var(--color-elevated)]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-4"
+                aria-hidden="true"
+              >
+                <path
+                  d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5Z"
+                />
+              </svg>
+              Cómo funciona
+            </a>
+          </div>
+
+          <!-- Prueba social -->
+          <div class="hero-social">
+            <div id="hero-avatars"></div>
+
+            <div>
+              <!-- Valoración -->
+              <div
+                class="rating rating-xs"
+                role="img"
+                aria-label="Valoración: 5 de 5"
+              >
+                <div
+                  class="mask mask-star-2 bg-amber-400"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="mask mask-star-2 bg-amber-400"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="mask mask-star-2 bg-amber-400"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="mask mask-star-2 bg-amber-400"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="mask mask-star-2 bg-amber-400"
+                  aria-hidden="true"
+                  aria-current="true"
+                ></div>
+              </div>
+              <p class="hero-social__text">
+                <strong class="text-fg">+14.200 círculos</strong> de familiares
+                y amigos compartiendo recuerdos
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="section-hero--right motion-safe:animate-fade-up [--fade-delay:150ms]">
+          <div class="hero-cards">
+            <!-- Cards de álbum -->
+            <div id="hero-circles" class="hero-cards__row"></div>
+
+            <!-- Card de subida -->
+            <div class="card card-sm card-border bg-base-100 hero-card-mini">
+              <div class="card-body flex-row items-center gap-3">
+                <span class="icon-box icon-box--mint shrink-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    class="size-5"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m5 13 4 4L19 7"
+                    />
+                  </svg>
+                </span>
+                <div class="min-w-0 flex-1">
+                  <p class="text-sm font-semibold">Viaje a Lisboa</p>
+                  <p class="text-xs text-fg-muted">Subida completada · 100%</p>
+                  <progress
+                    class="progress progress-primary mt-2 w-full"
+                    value="100"
+                    max="100"
+                  ></progress>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Funciones -->
+      <section id="funciones" class="container-content section-spacing">
+        <div class="section-header">
+          <span class="pill">Privacidad y cercanía</span>
+          <h2>Diseñado para compartir lo que de verdad importa</h2>
+          <p>
+            Un refugio digital sereno para revivir instantes únicos entre
+            quienes comparten la misma historia.
+          </p>
+        </div>
+
+        <ul
+          id="features-list"
+          class="mobile-carousel features-list"
+          tabindex="0"
+          aria-label="Funciones"
+        ></ul>
+      </section>
+
+      <!-- Recuerdos -->
+      <section id="recuerdos" class="container-content section-spacing">
+        <!-- Cabecera + chip -->
+        <div class="section-heading-row">
+          <div class="section-header section-header--left">
+            <span class="pill">Álbum colaborativo</span>
+            <h2>Un mosaico vivo de momentos compartidos</h2>
             <p>
-              Crea un espacio privado con la gente que te importa, y guardad
-              juntos los recuerdos que no queréis perder.
+              Explora tus recuerdos como si hojearas un álbum familiar hecho a
+              mano, vivo y actualizado en tiempo real.
             </p>
-            <p>Sin algoritmos, sin muros públicos, y con calidad original.</p>
-          </header>
+          </div>
+          <span class="chip">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="size-4 text-brand-500"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 3l1.5 4.5L15 9l-4.5 1.5L9 15l-1.5-4.5L3 9l4.5-1.5L9 3Z"
+              />
+              <path
+                d="m17 13 1 2.5 2.5 1-2.5 1L17 20l-1-2.5-2.5-1 2.5-1L17 13Z"
+              />
+            </svg>
+            Ordenado cronológicamente
+          </span>
+        </div>
+
+        <!-- Mosaico -->
+        <div class="bento">
           <div
-            id="features"
-            class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            id="recuerdos-featured"
+            class="bento__slot bento__featured"
           ></div>
+
+          <figure class="photo-tile bento__photo-top">
+            <img
+              src="https://images.unsplash.com/photo-1605713288610-00c1c630ca1e?w=800&h=800&fit=crop&auto=format&q=80"
+              alt="Dos niños dándose un abrazo"
+              width="800"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              class="photo-tile__image"
+            />
+          </figure>
+          <figure class="photo-tile bento__photo-bottom">
+            <img
+              src="https://images.unsplash.com/photo-1645730826845-cd2ddec9984f?w=800&h=800&fit=crop&auto=format&q=80"
+              alt="Grupo de amigos bailando en una fiesta"
+              width="800"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              class="photo-tile__image"
+            />
+          </figure>
+
+          <div id="recuerdos-members" class="bento__slot bento__members"></div>
+          <div id="recuerdos-info" class="bento__slot bento__info"></div>
+        </div>
+      </section>
+
+      <!-- Cómo funciona -->
+      <section id="como-funciona" class="container-content section-spacing">
+        <div class="section-header">
+          <span class="pill">Cómo funciona</span>
+          <h2>Tan simple como abrir una caja de recuerdos</h2>
+          <p>
+            Cuatro sencillos pasos para empezar a guardar vuestros momentos
+            juntos.
+          </p>
+        </div>
+
+        <ol id="steps-list" class="steps-list"></ol>
+      </section>
+
+      <!-- Precios -->
+      <section id="precios" class="container-content section-spacing">
+        <div class="section-header">
+          <span class="pill">Sin anuncios ni sorpresas</span>
+          <h2>Planes transparentes para recuerdos para siempre</h2>
+          <p>
+            Empieza gratis con tu círculo íntimo o amplía el espacio conforme
+            crezcan vuestros viajes y celebraciones.
+          </p>
+        </div>
+
+        <!-- Selector de facturación -->
+        <div id="billing-toggle" class="pricing-toggle"></div>
+
+        <!-- Planes -->
+        <div id="plans-list" class="plans-list"></div>
+
+        <p class="pricing-note">
+          Sin permanencia · Cancela en cualquier momento · Exporta tus
+          fotografías en calidad original en 1 clic
+        </p>
+      </section>
+
+      <!-- Preguntas -->
+      <section id="preguntas" class="container-content section-spacing">
+        <div class="section-header">
+          <span class="pill">Dudas resueltas</span>
+          <h2>Preguntas frecuentes</h2>
+          <p>
+            Todo lo que necesitas saber sobre la privacidad y el funcionamiento
+            de Memora.
+          </p>
+        </div>
+
+        <div id="faqs-list" class="faqs-list"></div>
+
+        <!-- Caja de ayuda -->
+        <div class="help-box">
+          <span class="help-box__icon" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="size-4"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path
+                d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.1M12 17h.01"
+              />
+            </svg>
+          </span>
+          <p>
+            ¿Tienes más dudas? Visita nuestro
+            <a href="#" class="help-box__link">Centro de Ayuda</a> o escríbenos
+            directamente a
+            <a
+              href="mailto:hola@memora.app"
+              class="help-box__link inline-flex items-center gap-1 align-bottom"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="size-3.5"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+              hola@memora.app
+            </a>
+          </p>
         </div>
       </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container-content">
+        <div class="site-footer__grid">
+          <!-- Marca -->
+          <div class="site-footer__brand">
+            <a href="#top" class="logo">
+              <img src="/logo.svg" alt="" class="size-9" />
+              memora
+            </a>
+            <p class="site-footer__text">
+              Un lugar íntimo y compartido para los recuerdos de quienes más
+              quieres. Diseñado para preservar la memoria sin ruido social.
+            </p>
+            <ul class="site-footer__social">
+              <li>
+                <a
+                  href="#"
+                  class="site-footer__social-link"
+                  aria-label="Instagram"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="size-4"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M17.5 6.5h.01" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="site-footer__social-link"
+                  aria-label="Twitter"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="size-4"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2Z"
+                    />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="site-footer__social-link"
+                  aria-label="Galería de fotos"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="size-4"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"
+                    />
+                    <circle cx="12" cy="13" r="3" />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Columnas de enlaces -->
+          <nav class="site-footer__col" aria-labelledby="footer-producto">
+            <h2 id="footer-producto" class="site-footer__heading">Producto</h2>
+            <ul class="site-footer__links">
+              <li><a href="#funciones">Funciones</a></li>
+              <li><a href="#recuerdos">Álbumes compartidos</a></li>
+              <li><a href="#recuerdos">Bento de recuerdos</a></li>
+              <li><a href="#precios">Precios</a></li>
+            </ul>
+          </nav>
+
+          <nav class="site-footer__col" aria-labelledby="footer-ayuda">
+            <h2 id="footer-ayuda" class="site-footer__heading">Ayuda</h2>
+            <ul class="site-footer__links">
+              <li><a href="#preguntas">FAQ</a></li>
+              <li><a href="#">Centro de ayuda</a></li>
+              <li><a href="mailto:hola@memora.app">Contacto</a></li>
+              <li><a href="#">Seguridad y privacidad</a></li>
+            </ul>
+          </nav>
+
+          <!-- Newsletter -->
+          <div class="site-footer__newsletter">
+            <h2 class="site-footer__heading">Permanece en el círculo</h2>
+            <p class="site-footer__text mt-4">
+              Recibe crónicas sobre memoria colectiva, fotografía analógica y
+              novedades íntimas.
+            </p>
+            <form id="newsletter-form" class="site-footer__form">
+              <label for="newsletter-email" class="sr-only"
+                >Tu correo electrónico</label
+              >
+              <input
+                id="newsletter-email"
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="tu@email.com"
+                aria-describedby="newsletter-error"
+                class="peer input min-w-0 flex-1 border-white/15 bg-white/5 text-footer-text placeholder:text-footer-text/60
+                       focus:border-brand-400 user-invalid:border-danger
+                       disabled:cursor-not-allowed disabled:opacity-60"
+              />
+              <button type="submit" class="btn btn-primary disabled:opacity-60">
+                Suscribirse
+              </button>
+              <!-- Error: visible solo si el email no es válido (peer-user-invalid) -->
+              <p id="newsletter-error" class="site-footer__error">
+                Introduce un email válido, por ejemplo nombre@dominio.com
+              </p>
+            </form>
+            <p
+              id="newsletter-status"
+              class="site-footer__status"
+              aria-live="polite"
+            ></p>
+            <a href="mailto:hola@memora.app" class="site-footer__mail">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="size-4"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+              hola@memora.app
+            </a>
+          </div>
+        </div>
+
+        <!-- Barra inferior -->
+        <div class="site-footer__bottom">
+          <p>© 2026 memora. Guardando momentos verdaderos.</p>
+          <nav aria-label="Legal">
+            <ul class="site-footer__legal">
+              <li><a href="#">Privacidad</a></li>
+              <li><a href="#">Términos de servicio</a></li>
+              <li><a href="#">Política de cookies</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Volver arriba -->
+    <button
+      type="button"
+      id="back-to-top"
+      class="btn btn-circle btn-primary back-to-top shadow-brand transition-[opacity,translate,visibility] duration-300"
+      aria-label="Volver arriba"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="size-5"
+        aria-hidden="true"
+      >
+        <path d="M12 19V5M6 11l6-6 6 6" />
+      </svg>
+    </button>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

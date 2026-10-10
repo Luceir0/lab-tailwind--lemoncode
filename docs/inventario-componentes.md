@@ -34,7 +34,7 @@ Análisis del diseño (light y dark) antes de maquetar.
 | Componente | Dónde | Cómo | Notas |
 |---|---|---|---|
 | **Section header** (eyebrow + h2 + p) | Funciones, Cómo funciona, Precios, Preguntas | CSS `.section-header` | Centrado. En "Recuerdos" va alineado a la izquierda: variante `.section-header--left` |
-| **Surface card** | Base de casi todas las cards | CSS `.surface-card` | Ya creada en `style.css` |
+| **Surface card** | Base de casi todas las cards | CSS `.surface-card` | Ya creada en `src/styles/components.css` |
 | **Feature card** | Funciones (×6) | JS `featureCard()` + `data/features.js` | icon box + h3 + p |
 | **Step card** | Cómo funciona (×4) | JS `stepCard()` + `data/steps.js` | Círculo con número coloreado (brand, brand, pink, mint) |
 | **Pricing card** | Precios (×3) | JS `pricingCard()` + `data/plans.js` | Plus = variante destacada (borde brand, badge "Más popular", botón primario) |

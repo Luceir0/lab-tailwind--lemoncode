@@ -1,0 +1,359 @@
+/* =========================================================================
+   COMPONENTES DEL SISTEMA DE DISEÑO (reutilizables en la landing y en la app)
+   Nota: daisyUI va en la capa utilities y gana a esta capa. Lo que daisyUI
+   ya define (colores de btn/badge, transition de card…) se sobrescribe con
+   utilidades en el HTML, no aquí.
+   ========================================================================= */
+
+@layer components {
+  /* ---------- Layout ---------- */
+
+  /* Contenedor centrado con ancho máximo */
+  .container-content {
+    @apply mx-auto w-full max-w-content px-4 sm:py-6 lg:px-8;
+  }
+
+  /* ---------- Marca ---------- */
+
+  .logo {
+    @apply flex shrink-0 items-center gap-2 text-xl font-extrabold tracking-tight text-fg;
+  }
+  .logo__dot {
+    @apply mb-2.5 -ml-1 size-1.5 self-end rounded-full bg-brand-400;
+  }
+
+  /* ---------- Etiquetas ---------- */
+
+  /* Pill de sección (eyebrow) */
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-100
+           px-3 py-1 text-2xs font-semibold tracking-wider text-brand-700 uppercase;
+  }
+  .pill::before {
+    @apply size-1.5 shrink-0 rounded-full bg-current;
+    content: "";
+  }
+
+  /* Chip informativo */
+  .chip {
+    @apply inline-flex shrink-0 items-center gap-2 rounded-lg border border-outline bg-surface
+           px-3 py-2 text-sm font-medium text-fg shadow-xs;
+  }
+
+  /* ---------- Iconos y marcadores ---------- */
+
+  /* Icono con fondo suave, por tono */
+  .icon-box {
+    @apply grid size-10 place-items-center rounded-md;
+  }
+  .icon-box--brand {
+    @apply bg-brand-50 text-brand-600 dark:bg-brand-900/40;
+  }
+  .icon-box--pink {
+    @apply bg-accent-pink-soft text-accent-pink;
+  }
+  .icon-box--peach {
+    @apply bg-accent-peach-soft text-accent-peach;
+  }
+  .icon-box--mint {
+    @apply bg-accent-mint-soft text-accent-mint;
+  }
+
+  /* Círculo numerado, por tono (fondos con contraste ≥ 4.5:1 para el texto blanco) */
+  .step-number {
+    @apply grid size-10 place-items-center rounded-full text-sm font-bold text-white shadow-md ring-4;
+  }
+  .step-number--brand {
+    @apply bg-brand-600 ring-brand-600/15;
+  }
+  .step-number--pink {
+    @apply bg-accent-pink-hover ring-accent-pink/15;
+  }
+  .step-number--peach {
+    @apply bg-accent-peach-strong ring-accent-peach/15;
+  }
+  .step-number--mint {
+    @apply bg-accent-mint-strong ring-accent-mint/15;
+  }
+
+  /* ---------- Botones ---------- */
+
+  /* Botón "Me gusta" (estado en aria-pressed) */
+  .like-button {
+    @apply shrink-0;
+  }
+  .like-button svg {
+    @apply size-3.5 fill-transparent text-fg-muted transition-[color,fill,scale] duration-300
+           ease-standard sm:size-4;
+  }
+  .like-button[aria-pressed="true"] svg {
+    @apply fill-current text-red-500;
+  }
+  .like-button:active svg {
+    @apply motion-safe:scale-75;
+  }
+
+  /* Botón flotante "Volver arriba" (visible con data-visible="true") */
+  .back-to-top {
+    @apply fixed right-4 bottom-4 z-40 sm:right-6 sm:bottom-6;
+  }
+  .back-to-top:not([data-visible="true"]) {
+    @apply invisible opacity-0 motion-safe:translate-y-4;
+  }
+
+  /* ---------- Cabeceras de sección ---------- */
+
+  .section-header {
+    @apply mx-auto max-w-3xl text-center;
+  }
+  .section-header h2 {
+    @apply mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl;
+  }
+  .section-header p {
+    @apply mt-4 text-fg-secondary lg:text-lg;
+  }
+  .section-header--left {
+    @apply mx-0 max-w-2xl text-left;
+  }
+
+  /* Cabecera + elemento a la derecha */
+  .section-heading-row {
+    @apply flex flex-col items-start gap-6 lg:flex-row lg:items-end lg:justify-between;
+  }
+
+  /* ---------- Contenedores ---------- */
+
+  /* Caja base de card */
+  .surface-card {
+    @apply rounded-card border border-outline bg-surface p-6 shadow-sm;
+  }
+
+  /* Lista en carrusel horizontal en móvil y en grid desde sm */
+  .mobile-carousel {
+    @apply -mx-4 mt-12 flex snap-x snap-mandatory scroll-px-4 scrollbar-none gap-4 overflow-x-auto px-4 pb-4
+           sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0;
+  }
+  .mobile-carousel > * {
+    @apply w-[85%] shrink-0 snap-start sm:w-auto;
+  }
+
+  /* Foto suelta con aspecto de card */
+  .photo-tile {
+    @apply aspect-[4/3] overflow-hidden rounded-2xl border border-outline shadow-sm lg:aspect-auto;
+  }
+  .photo-tile__image {
+    @apply size-full bg-elevated object-cover;
+  }
+
+  /* Acordeón (sobre el collapse de daisyUI) */
+  .accordion {
+    @apply border border-outline bg-surface shadow-xs;
+  }
+  .accordion > summary {
+    @apply transition-colors hover:text-brand-600;
+  }
+  .accordion__icon {
+    @apply grid size-7 shrink-0 place-items-center rounded-full bg-elevated text-fg-muted
+           transition-transform duration-300 ease-standard group-open:rotate-180
+           motion-reduce:transition-none;
+  }
+  .accordion__content {
+    @apply border-t border-outline leading-relaxed text-fg-secondary;
+  }
+
+  /* Caja de ayuda / aviso */
+  .help-box {
+    @apply mx-auto mt-12 flex w-fit items-center gap-3 rounded-2xl border border-brand-200 bg-brand-50
+           p-5 text-sm text-fg-secondary dark:border-brand-800 dark:bg-brand-900/30;
+  }
+  .help-box__icon {
+    @apply grid size-8 shrink-0 place-items-center rounded-full bg-brand-600 text-white;
+  }
+  .help-box__link {
+    @apply font-semibold text-brand-600 hover:underline dark:text-brand-300;
+  }
+
+  /* ---------- Cards ---------- */
+
+  /* Feature card (featureCard.js) */
+  .feature-card__title {
+    @apply mt-6 text-lg font-bold;
+  }
+  .feature-card__text {
+    @apply mt-2 text-base leading-relaxed text-fg-secondary;
+  }
+
+  /* Info card (landingInfoCard.js): variantes brand y light */
+  .info-card {
+    @apply flex flex-col items-start;
+  }
+  .info-card__text:not(:last-child) {
+    @apply mb-8;
+  }
+  .info-card__footer {
+    @apply mt-auto flex w-full items-center justify-between gap-2 border-t border-white/20 pt-4
+           text-xs text-white/75;
+  }
+  .info-card__highlight {
+    @apply inline-flex items-center gap-1 font-semibold text-white;
+  }
+
+  .info-card--brand {
+    @apply rounded-2xl bg-linear-to-br from-brand-500 to-brand-800 p-6 text-white shadow-brand
+           dark:from-brand-700 dark:to-brand-900;
+  }
+  .info-card--brand .info-card__title {
+    @apply mt-4 text-2xl font-bold;
+  }
+  .info-card--brand .info-card__text {
+    @apply mt-3 text-sm leading-relaxed text-white/85;
+  }
+
+  .info-card--light .info-card__title {
+    @apply mt-6 text-lg font-bold;
+  }
+  .info-card--light .info-card__text {
+    @apply mt-2 text-base leading-relaxed text-fg-secondary;
+  }
+
+  /* Circle card (circleMainCard.js): se adapta a su propio ancho (@container) */
+  .circle-card {
+    @apply @container flex flex-col overflow-hidden rounded-2xl border border-outline bg-surface text-left;
+  }
+  .circle-card__media {
+    @apply relative;
+  }
+  .circle-card__image {
+    @apply aspect-[4/5] h-auto w-full bg-elevated object-cover @card:aspect-[4/3] @lg:aspect-video;
+  }
+  .circle-card__overlay {
+    @apply absolute inset-0 flex flex-col justify-between p-2 @card:p-3;
+
+    /* Sombra inferior para que se lea el texto blanco */
+    background-image: linear-gradient(
+      to top,
+      rgb(0 0 0 / 0.9) 0%,
+      rgb(0 0 0 / 0.7) 30%,
+      transparent 60%
+    );
+  }
+  .circle-card__row {
+    @apply flex justify-between gap-2;
+  }
+  .circle-card__badges {
+    @apply flex min-w-0 flex-col items-start gap-1;
+  }
+  .circle-card__badge {
+    @apply max-w-full font-semibold;
+  }
+  .circle-card__bottom {
+    @apply flex flex-col items-start gap-3 @2xs:flex-row @2xs:items-end @2xs:justify-between;
+  }
+  .circle-card__location {
+    @apply hidden items-center gap-1 text-xs text-white/85 @card:flex;
+  }
+  .circle-card__title {
+    @apply text-sm leading-tight font-bold text-white @card:mt-0.5 @card:text-lg @lg:text-3xl;
+  }
+  .circle-card__avatars {
+    @apply shrink-0 self-end;
+  }
+  .circle-card__footer {
+    @apply flex flex-col gap-1.5 px-3 py-2.5 @card:px-4 @card:py-3;
+  }
+  .circle-card__meta {
+    @apply flex items-start gap-1.5 text-xs text-fg-muted;
+  }
+
+  /* Members card (circleMembersCard.js) */
+  .members-card {
+    @apply flex flex-col rounded-2xl;
+  }
+  .members-card__head {
+    @apply flex items-center justify-between gap-2;
+  }
+  .members-card__eyebrow {
+    @apply text-2xs font-semibold tracking-wider text-fg-muted uppercase;
+  }
+  .members-card__filter {
+    @apply inline-flex items-center gap-1 rounded-md px-1.5 py-1 text-xs font-medium text-brand-600
+           transition-colors hover:bg-brand-50 focus-visible:bg-brand-50
+           dark:hover:bg-brand-900/40 dark:focus-visible:bg-brand-900/40;
+  }
+  .members-card__title {
+    @apply mt-3 text-lg font-bold;
+  }
+  .members-card__text {
+    @apply mt-1 text-xs text-fg-muted;
+  }
+  .members-card__list {
+    @apply mt-4 mb-6 flex flex-col gap-2;
+  }
+  .members-card__footer {
+    @apply mt-auto flex items-center justify-between gap-2 border-t border-outline pt-4 text-xs
+           text-fg-muted;
+  }
+  .members-card__private {
+    @apply inline-flex items-center gap-1 font-semibold text-accent-mint-strong dark:text-accent-mint;
+  }
+
+  /* Fila de miembro (memberRow.js), seleccionable con aria-pressed */
+  .member-row {
+    @apply flex w-full items-center gap-3 rounded-xl border border-outline bg-subtle p-2.5 text-left
+           transition-colors hover:border-brand-200 hover:bg-brand-50/60 focus-visible:border-brand-400
+           dark:hover:border-brand-800 dark:hover:bg-brand-900/30;
+  }
+  .member-row[aria-pressed="true"] {
+    @apply border-brand-400 bg-brand-50 dark:border-brand-600 dark:bg-brand-900/40;
+  }
+  .member-row__avatar {
+    @apply size-9 shrink-0 rounded-full bg-elevated object-cover;
+  }
+  .member-row__info {
+    @apply flex min-w-0 flex-1 flex-col;
+  }
+  .member-row__name {
+    @apply truncate text-sm font-semibold;
+  }
+  .member-row__role {
+    @apply truncate text-2xs text-fg-muted;
+  }
+
+  /* Pricing card (pricingCard.js), variante destacada --featured */
+  .pricing-card {
+    @apply relative flex flex-col rounded-2xl border border-outline bg-surface p-6 shadow-sm sm:p-8;
+  }
+  .pricing-card--featured {
+    @apply border-2 border-brand-500 shadow-brand;
+  }
+  .pricing-card__badge {
+    @apply absolute -top-3 left-1/2 -translate-x-1/2 gap-1 whitespace-nowrap;
+  }
+  .pricing-card__name {
+    @apply text-2xl font-bold;
+  }
+  .pricing-card__description {
+    @apply mt-2 text-sm text-fg-secondary;
+  }
+  .pricing-card__price {
+    @apply mt-6 flex items-baseline gap-2 border-b border-outline pb-6;
+  }
+  .pricing-card__amount {
+    @apply text-5xl font-extrabold tracking-tight;
+  }
+  .pricing-card__period {
+    @apply text-sm text-fg-muted;
+  }
+  .pricing-card__features {
+    @apply mt-6 mb-8 flex flex-col gap-3 text-sm text-fg-secondary;
+  }
+  .pricing-card__features li {
+    @apply flex items-start gap-3;
+  }
+  .pricing-card__check {
+    @apply mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-accent-mint-soft text-accent-mint;
+  }
+  .pricing-card__cta {
+    @apply mt-auto;
+  }
+}

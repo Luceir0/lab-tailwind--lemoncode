@@ -1,0 +1,67 @@
+/* =========================================================================
+   ENTRADA DE ESTILOS
+   tokens + base + components + utilities = sistema de diseño (reutilizable)
+   landing = maquetación propia de esta página
+   ========================================================================= */
+
+@import "tailwindcss";
+
+/* La documentación no forma parte del proyecto: que Tailwind no busque clases en ella */
+@source not "../../docs";
+
+@import "./tokens.css";
+@import "./components.css";
+@import "./landing.css";
+@import "./utilities.css";
+
+/* daisyUI con los colores de Memora (tema según data-theme de <html>) */
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --prefersdark;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: var(--memora-brand-600);
+  --color-primary-content: #ffffff;
+  --color-base-100: var(--memora-bg-surface);
+  --color-base-200: var(--memora-bg-page);
+  --color-base-300: var(--memora-bg-elevated);
+  --color-base-content: var(--memora-text-primary);
+  --radius-field: var(--memora-radius-md);
+  --radius-box: var(--memora-radius-2xl);
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  prefersdark: true;
+  --color-primary: var(--memora-brand-600);
+  --color-primary-content: #ffffff;
+  --color-base-100: var(--memora-bg-surface);
+  --color-base-200: var(--memora-bg-page);
+  --color-base-300: var(--memora-bg-elevated);
+  --color-base-content: var(--memora-text-primary);
+  --radius-field: var(--memora-radius-md);
+  --radius-box: var(--memora-radius-2xl);
+}
+
+/* Estilos generales */
+@layer base {
+  body {
+    @apply bg-page font-sans text-fg;
+  }
+
+  /* Tipografía de títulos */
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+
+  /* Foco visible con teclado en todo lo interactivo */
+  :focus-visible {
+    @apply rounded-sm outline-2 outline-offset-2 outline-brand-500;
+  }
+}

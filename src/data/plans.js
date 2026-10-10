@@ -1,5 +1,11 @@
-// Sección "Precios". Los precios van como números (€/mes) y se formatean al pintarlos.
-// El precio anual es el mensual con un 20 % de descuento.
+// Planes de precios (pricingCard). price en €/mes; yearly = €/mes pagando el año
+
+// Opciones del selector de facturación (value = clave de price)
+export const billingPeriods = [
+  { value: "monthly", label: "Facturación mensual" },
+  { value: "yearly", label: "Facturación anual" },
+];
+
 export const plans = [
   {
     name: "Gratis",
@@ -19,7 +25,7 @@ export const plans = [
   {
     name: "Plus",
     description: "Para familias y grupos de amigos activos.",
-    price: { monthly: 6.99, yearly: 5.59 },
+    price: { monthly: 6.99, yearly: 4.99 },
     features: [
       "100 GB de almacenamiento",
       "Hasta 5 Círculos",
@@ -36,7 +42,7 @@ export const plans = [
   {
     name: "Pro",
     description: "Para grandes archivos y coleccionistas de fotos.",
-    price: { monthly: 14.99, yearly: 11.99 },
+    price: { monthly: 14.99, yearly: 12.99 },
     features: [
       "1 TB de almacenamiento",
       "Círculos ilimitados",
