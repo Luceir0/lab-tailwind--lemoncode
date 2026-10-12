@@ -1,7 +1,7 @@
 // Cambio de facturación: muestra el importe data-monthly / data-yearly
 export function initBillingToggle({
   inputs = 'input[name="billing"]',
-  amounts = ".pricing-card__amount",
+  amounts = "[data-monthly]",
 } = {}) {
   document.querySelectorAll(inputs).forEach((input) => {
     input.addEventListener("change", () => {

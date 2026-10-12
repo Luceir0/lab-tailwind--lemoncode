@@ -31,8 +31,16 @@ import { initTheme } from "./scripts/theme.js";
 render("#hero-avatars", [heroCommunity], ({ people, extra }) =>
   avatarGroup(people, { extra, size: "w-11", className: "-space-x-4" }),
 );
-// Cards ilustrativas: título como <p> (no puede haber h3 justo tras el h1)
-render("#hero-circles", circles, (circle) => circleMainCard({ ...circle, titleTag: "p" }));
+// Cards ilustrativas superpuestas: título como <p> (no puede haber h3 justo tras el h1)
+const heroCardBase =
+  "w-[53%] shrink-0 shadow-xl transition-[rotate] duration-500 ease-standard sm:w-1/2";
+const heroCardTilt = [
+  "mt-6 -rotate-4 motion-safe:hover:-rotate-6",
+  "relative z-10 -ml-[6%] rotate-4 motion-safe:hover:rotate-6 sm:-ml-6",
+];
+render("#hero-circles", circles, (circle, index) =>
+  circleMainCard({ ...circle, titleTag: "p", className: `${heroCardBase} ${heroCardTilt[index]}` }),
+);
 
 // Funciones
 render("#features-list", features, featureCard);
@@ -59,7 +67,7 @@ render("#faqs-list", faqs, faqItem);
 // Interacciones
 initTheme();
 initNavMenu();
-initPressToggles(".like-button, .member-row");
+initPressToggles("[data-press-toggle]");
 initBillingToggle();
 initNewsletter();
 initBackToTop();

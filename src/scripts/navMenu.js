@@ -1,15 +1,14 @@
-// Menú hamburguesa: abre / cierra el panel de enlaces del header
+// Menú hamburguesa: abre / cierra el panel de enlaces del header (data-open)
 export function initNavMenu({
-  nav = ".site-nav",
+  menu = "#site-menu",
   toggle = "#menu-toggle",
-  links = "#site-menu a",
 } = {}) {
-  const navEl = document.querySelector(nav);
+  const menuEl = document.querySelector(menu);
   const toggleEl = document.querySelector(toggle);
-  if (!navEl || !toggleEl) return;
+  if (!menuEl || !toggleEl) return;
 
   function setOpen(open) {
-    navEl.dataset.open = String(open);
+    menuEl.dataset.open = String(open);
     toggleEl.setAttribute("aria-expanded", String(open));
   }
 
@@ -17,7 +16,7 @@ export function initNavMenu({
     setOpen(toggleEl.getAttribute("aria-expanded") !== "true");
   });
 
-  document.querySelectorAll(links).forEach((link) => {
+  menuEl.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => setOpen(false));
   });
 }

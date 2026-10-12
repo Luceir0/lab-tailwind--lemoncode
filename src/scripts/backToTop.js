@@ -1,7 +1,7 @@
 // Botón "Volver arriba": visible tras hacer scroll; sube y lleva el foco al inicio
 export function initBackToTop({
   button = "#back-to-top",
-  focusTarget = ".site-nav .logo",
+  focusTarget = "#logo",
   offset = 400,
 } = {}) {
   const buttonEl = document.querySelector(button);

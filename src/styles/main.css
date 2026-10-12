@@ -1,7 +1,6 @@
 /* =========================================================================
    ENTRADA DE ESTILOS
-   tokens + base + components + utilities = sistema de diseño (reutilizable)
-   landing = maquetación propia de esta página
+   tokens + base + components + utilities
    ========================================================================= */
 
 @import "tailwindcss";
@@ -11,7 +10,6 @@
 
 @import "./tokens.css";
 @import "./components.css";
-@import "./landing.css";
 @import "./utilities.css";
 
 /* daisyUI con los colores de Memora (tema según data-theme de <html>) */

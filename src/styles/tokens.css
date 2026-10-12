@@ -45,37 +45,43 @@
   --memora-tracking-wide: 0.05em;
   --memora-tracking-wider: 0.075em;
 
-  /* Marca */
+  /* Marca · Violeta */
   --memora-brand-50: #f0efff;
   --memora-brand-100: #e2dfff;
   --memora-brand-200: #c8c3ff;
   --memora-brand-300: #aaa2ff;
   --memora-brand-400: #8980fa;
   --memora-brand-500: #6c63ff;
-  --memora-brand-600: #584fe5; /* principal */
-  --memora-brand-700: #463ec1; /* hover */
+  --memora-brand-600: #584fe5;
+  --memora-brand-700: #463ec1;
   --memora-brand-800: #39349a;
   --memora-brand-900: #302d78;
 
-  /* Acentos */
-  --memora-accent-pink: #ec4899;
-  --memora-accent-pink-hover: #db2777;
-  --memora-accent-pink-soft: #fff0f7;
-  --memora-accent-pink-border: #ffd8eb;
+  /* Acentos · Rosa neón */
+  --memora-accent-pink: #ff39c6;
+  --memora-accent-pink-hover: #ff00b8;
+  --memora-accent-pink-strong: #e000a2;
+  --memora-accent-pink-soft: #fff0fb;
+  --memora-accent-pink-border: #ffb8ed;
 
-  --memora-accent-peach: #f7935c;
-  --memora-accent-peach-hover: #ea7f44;
-  --memora-accent-peach-soft: #fff8f3;
-  --memora-accent-peach-border: #ffe4d1;
-  --memora-accent-peach-strong: #c2410c; /* texto o fondo con texto blanco */
+  /* Acentos · Naranja eléctrico */
+  --memora-accent-peach: #ff9500;
+  --memora-accent-peach-hover: #ff6a00;
+  --memora-accent-peach-strong: #f05a00;
+  --memora-accent-peach-soft: #fff4e5;
+  --memora-accent-peach-border: #ffd69a;
 
-  --memora-accent-mint: #10b981;
-  --memora-accent-mint-soft: #eafbf5;
-  --memora-accent-mint-border: #cef6e8;
-  --memora-accent-mint-strong: #047857; /* texto o fondo con texto blanco */
+  /* Acentos · Menta neón */
+  --memora-accent-mint: #00e6a0;
+  --memora-accent-mint-hover: #00db99;
+  --memora-accent-mint-soft: #e8fff6;
+  --memora-accent-mint-strong: #007d58;
+  --memora-accent-mint-border: #a8f7db;
 
   /* Estados */
   --memora-danger: #f87171;
+  --memora-rating: #fbbf24; /* estrellas de valoración */
+  --memora-heart: #ef4444; /* "Me gusta" activo */
 
   /* Superficies */
   --memora-bg-page: #f8fafc;
@@ -110,6 +116,7 @@
   --memora-shadow-lg: 0 20px 32px -8px rgba(15, 23, 42, 0.1);
   --memora-shadow-xl: 0 24px 48px -12px rgba(15, 23, 42, 0.14);
   --memora-shadow-brand: 0 12px 24px -4px rgba(88, 79, 229, 0.28);
+  --memora-shadow-brand-lg: 0 24px 48px -8px rgba(88, 79, 229, 0.38);
 
   /* Radios */
   --memora-radius-xs: 0.375rem; /* 6px */
@@ -177,6 +184,7 @@
   --memora-shadow-md: 0 12px 24px -6px rgba(0, 0, 0, 0.5);
   --memora-shadow-lg: 0 20px 32px -8px rgba(0, 0, 0, 0.6);
   --memora-shadow-brand: 0 12px 28px -4px rgba(88, 79, 229, 0.4);
+  --memora-shadow-brand-lg: 0 24px 52px -8px rgba(88, 79, 229, 0.55);
 
   --memora-accent-pink-soft: #2b1b29;
   --memora-accent-pink-border: #3d2338;
@@ -251,6 +259,8 @@
   --color-accent-mint-strong: var(--memora-accent-mint-strong);
 
   --color-danger: var(--memora-danger);
+  --color-rating: var(--memora-rating);
+  --color-heart: var(--memora-heart);
 
   --color-page: var(--memora-bg-page);
   --color-surface: var(--memora-bg-surface);
@@ -279,6 +289,7 @@
   --shadow-lg: var(--memora-shadow-lg);
   --shadow-xl: var(--memora-shadow-xl);
   --shadow-brand: var(--memora-shadow-brand);
+  --shadow-brand-lg: var(--memora-shadow-brand-lg);
 
   --radius-xs: var(--memora-radius-xs);
   --radius-sm: var(--memora-radius-sm);
@@ -315,7 +326,8 @@
    - inline: el valor se escribe en la clase, así --fade-delay se lee en el
      elemento animado y no en :root. */
 @theme inline {
-  --animate-fade-up: fade-up 1s var(--memora-ease-standard) var(--fade-delay, 0ms) both;
+  --animate-fade-up: fade-up 1s var(--memora-ease-standard)
+    var(--fade-delay, 0ms) both;
 
   @keyframes fade-up {
     from {

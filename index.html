@@ -10,28 +10,47 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
       rel="stylesheet"
     />
+    <meta
+      name="description"
+      content="Memora: un espacio privado para guardar y compartir fotos con tu familia y amigos, sin algoritmos ni anuncios y en calidad original."
+    />
     <title>Memora landing page</title>
   </head>
   <body>
     <!-- Header -->
-    <header class="site-header">
-      <nav class="site-nav container-content" aria-label="Principal">
-        <a href="#top" class="logo">
+    <header
+      class="sticky top-0 z-50 border-b border-glass-border bg-glass backdrop-blur-glass"
+    >
+      <nav
+        class="container-content flex h-header items-center gap-6"
+        aria-label="Principal"
+      >
+        <a
+          href="#top"
+          id="logo"
+          class="flex shrink-0 items-center gap-2 text-xl font-extrabold tracking-tight text-fg"
+        >
           <img src="/logo.svg" alt="" class="size-9" />
-          memora<span class="logo__dot" aria-hidden="true"></span>
+          memora<span
+            class="mb-2.5 -ml-1 size-1.5 self-end rounded-full bg-brand-400"
+            aria-hidden="true"
+          ></span>
         </a>
 
-        <!-- Enlaces -->
-        <ul id="site-menu" class="site-nav__links">
-          <li><a href="#top">Inicio</a></li>
-          <li><a href="#funciones">Funciones</a></li>
-          <li><a href="#recuerdos">Recuerdos</a></li>
-          <li><a href="#como-funciona">Cómo funciona</a></li>
-          <li><a href="#precios">Precios</a></li>
-          <li><a href="#preguntas">Preguntas</a></li>
+        <!-- Enlaces: panel desplegable en móvil (data-open), fila desde nav: -->
+        <ul
+          id="site-menu"
+          class="absolute inset-x-0 top-full hidden flex-col gap-1 border-b border-outline bg-surface p-4 shadow-md data-[open=true]:flex nav:static nav:mx-auto nav:flex nav:flex-row nav:gap-8 nav:border-0 nav:bg-transparent nav:p-0 nav:shadow-none"
+        >
+          <li><a href="#top" class="nav-link">Inicio</a></li>
+          <li><a href="#funciones" class="nav-link">Funciones</a></li>
+          <li><a href="#recuerdos" class="nav-link">Recuerdos</a></li>
+          <li><a href="#como-funciona" class="nav-link">Cómo funciona</a></li>
+          <li><a href="#precios" class="nav-link">Precios</a></li>
+          <li><a href="#preguntas" class="nav-link">Preguntas</a></li>
         </ul>
 
-        <div class="site-nav__actions">
+        <div class="ml-auto flex items-center gap-2 nav:ml-0">
           <!-- Cambio de tema -->
           <button
             type="button"
@@ -134,23 +153,30 @@
 
     <main class="p-4 lg:p-8">
       <!-- Hero -->
-      <section id="inicio" class="container-content section-hero">
-        <div class="section-hero--left motion-safe:animate-fade-up">
+      <section
+        id="inicio"
+        class="container-content grid grid-cols-1 items-center gap-8 pb-12 text-center md:grid-cols-[5fr_6fr] md:pb-20 md:text-left lg:my-8 lg:pb-0"
+      >
+        <div class="motion-safe:animate-fade-up">
           <span class="pill">Vuestra cápsula del tiempo privada</span>
-          <h1>
+          <h1
+            class="mt-8 text-4xl font-bold tracking-tight sm:text-5xl md:text-4xl lg:text-6xl"
+          >
             Todos vuestros recuerdos,
             <span class="text-brand-600">por fin, en el mismo lugar.</span>
           </h1>
-          <p>
+          <p class="mx-auto mt-8 max-w-xl text-fg-secondary md:mx-0 lg:text-xl">
             Crea un espacio privado con la gente que te importa, y guardad
             juntos los recuerdos que no queréis perder.
           </p>
-          <p class="mt-2">
+          <p class="mx-auto mt-2 max-w-xl text-fg-secondary md:mx-0 lg:text-xl">
             Sin algoritmos, sin muros públicos, y con calidad original.
           </p>
 
           <!-- Botones -->
-          <div class="hero-actions">
+          <div
+            class="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3 md:justify-start"
+          >
             <a href="#precios" class="btn btn-primary shadow-brand lg:btn-lg">
               Crea tu cuenta
               <svg
@@ -187,7 +213,9 @@
           </div>
 
           <!-- Prueba social -->
-          <div class="hero-social">
+          <div
+            class="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start"
+          >
             <div id="hero-avatars"></div>
 
             <div>
@@ -198,43 +226,50 @@
                 aria-label="Valoración: 5 de 5"
               >
                 <div
-                  class="mask mask-star-2 bg-amber-400"
+                  class="mask mask-star-2 bg-rating"
                   aria-hidden="true"
                 ></div>
                 <div
-                  class="mask mask-star-2 bg-amber-400"
+                  class="mask mask-star-2 bg-rating"
                   aria-hidden="true"
                 ></div>
                 <div
-                  class="mask mask-star-2 bg-amber-400"
+                  class="mask mask-star-2 bg-rating"
                   aria-hidden="true"
                 ></div>
                 <div
-                  class="mask mask-star-2 bg-amber-400"
+                  class="mask mask-star-2 bg-rating"
                   aria-hidden="true"
                 ></div>
                 <div
-                  class="mask mask-star-2 bg-amber-400"
+                  class="mask mask-star-2 bg-rating"
                   aria-hidden="true"
                   aria-current="true"
                 ></div>
               </div>
-              <p class="hero-social__text">
+              <p class="mt-1 max-w-xs text-sm text-fg-secondary">
                 <strong class="text-fg">+14.200 círculos</strong> de familiares
                 y amigos compartiendo recuerdos
               </p>
             </div>
           </div>
         </div>
-        <div class="section-hero--right motion-safe:animate-fade-up [--fade-delay:150ms]">
-          <div class="hero-cards">
-            <!-- Cards de álbum -->
-            <div id="hero-circles" class="hero-cards__row"></div>
+        <div class="motion-safe:animate-fade-up [--fade-delay:150ms]">
+          <div class="mx-auto w-full max-w-2xl text-left sm:px-2">
+            <!-- Cards de álbum (clases de cada una en main.js) -->
+            <div
+              id="hero-circles"
+              class="flex items-start justify-center"
+            ></div>
 
             <!-- Card de subida -->
-            <div class="card card-sm card-border bg-base-100 hero-card-mini">
+            <div
+              class="card card-sm card-border mx-auto mt-10 w-60 bg-base-100 shadow-lg"
+            >
               <div class="card-body flex-row items-center gap-3">
-                <span class="icon-box icon-box--mint shrink-0">
+                <span
+                  class="grid size-10 shrink-0 place-items-center rounded-md bg-accent-mint-soft text-accent-mint"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -277,9 +312,10 @@
           </p>
         </div>
 
+        <!-- Carrusel horizontal en móvil, grid desde sm -->
         <ul
           id="features-list"
-          class="mobile-carousel features-list"
+          class="-mx-4 mt-12 flex snap-x snap-mandatory scroll-px-4 scrollbar-none gap-4 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3"
           tabindex="0"
           aria-label="Funciones"
         ></ul>
@@ -288,7 +324,9 @@
       <!-- Recuerdos -->
       <section id="recuerdos" class="container-content section-spacing">
         <!-- Cabecera + chip -->
-        <div class="section-heading-row">
+        <div
+          class="flex flex-col items-start gap-6 lg:flex-row lg:items-end lg:justify-between"
+        >
           <div class="section-header section-header--left">
             <span class="pill">Álbum colaborativo</span>
             <h2>Un mosaico vivo de momentos compartidos</h2>
@@ -297,7 +335,9 @@
               mano, vivo y actualizado en tiempo real.
             </p>
           </div>
-          <span class="chip">
+          <span
+            class="inline-flex shrink-0 items-center gap-2 rounded-lg border border-outline bg-surface px-3 py-2 text-sm font-medium text-fg shadow-xs"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -321,13 +361,15 @@
         </div>
 
         <!-- Mosaico -->
-        <div class="bento">
+        <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-12">
           <div
             id="recuerdos-featured"
-            class="bento__slot bento__featured"
+            class="*:h-full md:col-span-2 lg:col-span-7"
           ></div>
 
-          <figure class="photo-tile bento__photo-top">
+          <figure
+            class="relative hidden aspect-4/3 overflow-hidden rounded-2xl border border-outline shadow-sm md:block lg:col-span-5 lg:aspect-auto"
+          >
             <img
               src="https://images.unsplash.com/photo-1605713288610-00c1c630ca1e?w=800&h=800&fit=crop&auto=format&q=80"
               alt="Dos niños dándose un abrazo"
@@ -335,10 +377,12 @@
               height="800"
               loading="lazy"
               decoding="async"
-              class="photo-tile__image"
+              class="size-full bg-elevated object-cover lg:absolute lg:inset-0"
             />
           </figure>
-          <figure class="photo-tile bento__photo-bottom">
+          <figure
+            class="relative hidden aspect-4/3 overflow-hidden rounded-2xl border border-outline shadow-sm md:block lg:col-span-4 lg:aspect-auto"
+          >
             <img
               src="https://images.unsplash.com/photo-1645730826845-cd2ddec9984f?w=800&h=800&fit=crop&auto=format&q=80"
               alt="Grupo de amigos bailando en una fiesta"
@@ -346,12 +390,12 @@
               height="800"
               loading="lazy"
               decoding="async"
-              class="photo-tile__image"
+              class="size-full bg-elevated object-cover lg:absolute lg:inset-0"
             />
           </figure>
 
-          <div id="recuerdos-members" class="bento__slot bento__members"></div>
-          <div id="recuerdos-info" class="bento__slot bento__info"></div>
+          <div id="recuerdos-members" class="*:h-full lg:col-span-5"></div>
+          <div id="recuerdos-info" class="*:h-full lg:col-span-3"></div>
         </div>
       </section>
 
@@ -366,7 +410,11 @@
           </p>
         </div>
 
-        <ol id="steps-list" class="steps-list"></ol>
+        <!-- Columna en móvil, fila desde md con una línea que une los pasos -->
+        <ol
+          id="steps-list"
+          class="relative mt-12 flex flex-col gap-6 md:flex-row md:before:absolute md:before:inset-x-0 md:before:top-11 md:before:h-px md:before:bg-outline"
+        ></ol>
       </section>
 
       <!-- Precios -->
@@ -381,12 +429,15 @@
         </div>
 
         <!-- Selector de facturación -->
-        <div id="billing-toggle" class="pricing-toggle"></div>
+        <div id="billing-toggle" class="mt-8 flex justify-center"></div>
 
         <!-- Planes -->
-        <div id="plans-list" class="plans-list"></div>
+        <div
+          id="plans-list"
+          class="mt-14 grid gap-8 lg:grid-cols-3 lg:gap-6"
+        ></div>
 
-        <p class="pricing-note">
+        <p class="mt-10 text-center text-xs text-fg-muted">
           Sin permanencia · Cancela en cualquier momento · Exporta tus
           fotografías en calidad original en 1 clic
         </p>
@@ -403,11 +454,19 @@
           </p>
         </div>
 
-        <div id="faqs-list" class="faqs-list"></div>
+        <div
+          id="faqs-list"
+          class="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-2 md:items-start"
+        ></div>
 
         <!-- Caja de ayuda -->
-        <div class="help-box">
-          <span class="help-box__icon" aria-hidden="true">
+        <div
+          class="mx-auto mt-12 flex w-fit items-center gap-3 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-sm text-fg-secondary dark:border-brand-800 dark:bg-brand-900/30"
+        >
+          <span
+            class="grid size-8 shrink-0 place-items-center rounded-full bg-brand-600 text-white"
+            aria-hidden="true"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -426,11 +485,15 @@
           </span>
           <p>
             ¿Tienes más dudas? Visita nuestro
-            <a href="#" class="help-box__link">Centro de Ayuda</a> o escríbenos
-            directamente a
+            <a
+              href="#"
+              class="font-semibold text-brand-600 hover:underline dark:text-brand-300"
+              >Centro de Ayuda</a
+            >
+            o escríbenos directamente a
             <a
               href="mailto:hola@memora.app"
-              class="help-box__link inline-flex items-center gap-1 align-bottom"
+              class="inline-flex items-center gap-1 align-bottom font-semibold text-brand-600 hover:underline dark:text-brand-300"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -454,24 +517,27 @@
     </main>
 
     <!-- Footer -->
-    <footer class="site-footer">
+    <footer class="bg-footer py-12 text-footer-text md:py-16">
       <div class="container-content">
-        <div class="site-footer__grid">
+        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <!-- Marca -->
-          <div class="site-footer__brand">
-            <a href="#top" class="logo">
+          <div class="sm:col-span-2 lg:col-span-4">
+            <a
+              href="#top"
+              class="flex shrink-0 items-center gap-2 text-xl font-extrabold tracking-tight text-footer-text"
+            >
               <img src="/logo.svg" alt="" class="size-9" />
               memora
             </a>
-            <p class="site-footer__text">
+            <p class="mt-5 text-sm leading-relaxed text-footer-text/70">
               Un lugar íntimo y compartido para los recuerdos de quienes más
               quieres. Diseñado para preservar la memoria sin ruido social.
             </p>
-            <ul class="site-footer__social">
+            <ul class="mt-6 flex gap-3">
               <li>
                 <a
                   href="#"
-                  class="site-footer__social-link"
+                  class="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-footer-text/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:text-white"
                   aria-label="Instagram"
                 >
                   <svg
@@ -494,7 +560,7 @@
               <li>
                 <a
                   href="#"
-                  class="site-footer__social-link"
+                  class="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-footer-text/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:text-white"
                   aria-label="Twitter"
                 >
                   <svg
@@ -517,7 +583,7 @@
               <li>
                 <a
                   href="#"
-                  class="site-footer__social-link"
+                  class="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-footer-text/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:text-white"
                   aria-label="Galería de fotos"
                 >
                   <svg
@@ -542,34 +608,56 @@
           </div>
 
           <!-- Columnas de enlaces -->
-          <nav class="site-footer__col" aria-labelledby="footer-producto">
-            <h2 id="footer-producto" class="site-footer__heading">Producto</h2>
-            <ul class="site-footer__links">
-              <li><a href="#funciones">Funciones</a></li>
-              <li><a href="#recuerdos">Álbumes compartidos</a></li>
-              <li><a href="#recuerdos">Bento de recuerdos</a></li>
-              <li><a href="#precios">Precios</a></li>
+          <nav class="lg:col-span-2" aria-labelledby="footer-producto">
+            <h2
+              id="footer-producto"
+              class="text-xs font-bold tracking-wider text-white uppercase"
+            >
+              Producto
+            </h2>
+            <ul class="mt-5 flex flex-col gap-3 text-sm">
+              <li><a href="#funciones" class="footer-link">Funciones</a></li>
+              <li>
+                <a href="#recuerdos" class="footer-link">Álbumes compartidos</a>
+              </li>
+              <li>
+                <a href="#recuerdos" class="footer-link">Bento de recuerdos</a>
+              </li>
+              <li><a href="#precios" class="footer-link">Precios</a></li>
             </ul>
           </nav>
 
-          <nav class="site-footer__col" aria-labelledby="footer-ayuda">
-            <h2 id="footer-ayuda" class="site-footer__heading">Ayuda</h2>
-            <ul class="site-footer__links">
-              <li><a href="#preguntas">FAQ</a></li>
-              <li><a href="#">Centro de ayuda</a></li>
-              <li><a href="mailto:hola@memora.app">Contacto</a></li>
-              <li><a href="#">Seguridad y privacidad</a></li>
+          <nav class="lg:col-span-2" aria-labelledby="footer-ayuda">
+            <h2
+              id="footer-ayuda"
+              class="text-xs font-bold tracking-wider text-white uppercase"
+            >
+              Ayuda
+            </h2>
+            <ul class="mt-5 flex flex-col gap-3 text-sm">
+              <li><a href="#preguntas" class="footer-link">FAQ</a></li>
+              <li><a href="#" class="footer-link">Centro de ayuda</a></li>
+              <li>
+                <a href="mailto:hola@memora.app" class="footer-link"
+                  >Contacto</a
+                >
+              </li>
+              <li>
+                <a href="#" class="footer-link">Seguridad y privacidad</a>
+              </li>
             </ul>
           </nav>
 
           <!-- Newsletter -->
-          <div class="site-footer__newsletter">
-            <h2 class="site-footer__heading">Permanece en el círculo</h2>
-            <p class="site-footer__text mt-4">
+          <div class="sm:col-span-2 lg:col-span-4">
+            <h2 class="text-xs font-bold tracking-wider text-white uppercase">
+              Permanece en el círculo
+            </h2>
+            <p class="mt-4 text-sm leading-relaxed text-footer-text/70">
               Recibe crónicas sobre memoria colectiva, fotografía analógica y
               novedades íntimas.
             </p>
-            <form id="newsletter-form" class="site-footer__form">
+            <form id="newsletter-form" class="mt-5 flex flex-wrap gap-2">
               <label for="newsletter-email" class="sr-only"
                 >Tu correo electrónico</label
               >
@@ -581,24 +669,28 @@
                 autocomplete="email"
                 placeholder="tu@email.com"
                 aria-describedby="newsletter-error"
-                class="peer input min-w-0 flex-1 border-white/15 bg-white/5 text-footer-text placeholder:text-footer-text/60
-                       focus:border-brand-400 user-invalid:border-danger
-                       disabled:cursor-not-allowed disabled:opacity-60"
+                class="peer input min-w-0 flex-1 border-white/15 bg-white/5 text-footer-text placeholder:text-footer-text/60 focus:border-brand-400 user-invalid:border-danger disabled:cursor-not-allowed disabled:opacity-60"
               />
               <button type="submit" class="btn btn-primary disabled:opacity-60">
                 Suscribirse
               </button>
               <!-- Error: visible solo si el email no es válido (peer-user-invalid) -->
-              <p id="newsletter-error" class="site-footer__error">
+              <p
+                id="newsletter-error"
+                class="hidden basis-full text-xs text-danger peer-user-invalid:block"
+              >
                 Introduce un email válido, por ejemplo nombre@dominio.com
               </p>
             </form>
             <p
               id="newsletter-status"
-              class="site-footer__status"
+              class="mt-2 text-xs text-accent-mint empty:hidden"
               aria-live="polite"
             ></p>
-            <a href="mailto:hola@memora.app" class="site-footer__mail">
+            <a
+              href="mailto:hola@memora.app"
+              class="footer-link mt-4 inline-flex items-center gap-2 text-sm"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -619,13 +711,15 @@
         </div>
 
         <!-- Barra inferior -->
-        <div class="site-footer__bottom">
+        <div
+          class="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-footer-text/60 sm:flex-row sm:items-center sm:justify-between"
+        >
           <p>© 2026 memora. Guardando momentos verdaderos.</p>
           <nav aria-label="Legal">
-            <ul class="site-footer__legal">
-              <li><a href="#">Privacidad</a></li>
-              <li><a href="#">Términos de servicio</a></li>
-              <li><a href="#">Política de cookies</a></li>
+            <ul class="flex flex-wrap gap-x-6 gap-y-2">
+              <li><a href="#" class="footer-link">Privacidad</a></li>
+              <li><a href="#" class="footer-link">Términos de servicio</a></li>
+              <li><a href="#" class="footer-link">Política de cookies</a></li>
             </ul>
           </nav>
         </div>
@@ -636,7 +730,7 @@
     <button
       type="button"
       id="back-to-top"
-      class="btn btn-circle btn-primary back-to-top shadow-brand transition-[opacity,translate,visibility] duration-300"
+      class="btn btn-circle btn-secondary invisible fixed right-4 bottom-4 z-40 opacity-0 shadow-brand transition-[opacity,translate,visibility] duration-300 motion-safe:translate-y-4 data-[visible=true]:visible data-[visible=true]:translate-y-0 data-[visible=true]:opacity-100 sm:right-6 sm:bottom-6"
       aria-label="Volver arriba"
     >
       <svg
