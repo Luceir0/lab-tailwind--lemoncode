@@ -2,8 +2,11 @@
    TOKENS DEL SISTEMA DE DISEÑO MEMORA
    ========================================================================= */
 
-/* Valores base (modo claro) */
-:root {
+/* Valores base (tema claro). Se aplican también a cualquier [data-theme] para
+   que cada tema parta de la base: así las muestras del selector de tema
+   (un <span data-theme="…">) se pintan con su tema y no con el de <html> */
+:root,
+[data-theme] {
   color-scheme: light;
 
   /* Tipografía */
@@ -159,9 +162,9 @@
   --memora-z-toast: 70;
 }
 
-/* Modo oscuro */
-:root.dark,
-:root[data-theme="dark"] {
+/* Tema oscuro */
+.dark,
+[data-theme="dark"] {
   color-scheme: dark;
 
   --memora-bg-page: #080f19;
@@ -185,6 +188,122 @@
   --memora-shadow-lg: 0 20px 32px -8px rgba(0, 0, 0, 0.6);
   --memora-shadow-brand: 0 12px 28px -4px rgba(88, 79, 229, 0.4);
   --memora-shadow-brand-lg: 0 24px 52px -8px rgba(88, 79, 229, 0.55);
+
+  --memora-accent-pink-soft: #2b1b29;
+  --memora-accent-pink-border: #3d2338;
+  --memora-accent-peach-soft: #2b201b;
+  --memora-accent-peach-border: #3d2a20;
+  --memora-accent-mint-soft: #0f2720;
+  --memora-accent-mint-border: #1b3d32;
+}
+
+/* =========================================================================
+   TEMAS DE COLOR (D3)
+   Solo cambian variables: las clases del HTML son las mismas en todos.
+   ========================================================================= */
+
+/* Matcha: verde, claro */
+[data-theme="matcha"] {
+  color-scheme: light;
+
+  --memora-brand-50: #f0f7ea;
+  --memora-brand-100: #ddeed0;
+  --memora-brand-200: #bfdca8;
+  --memora-brand-300: #9cc67b;
+  --memora-brand-400: #73a94f;
+  --memora-brand-500: #4f8a2e;
+  --memora-brand-600: #3f7524;
+  --memora-brand-700: #335e1e;
+  --memora-brand-800: #2a4d1c;
+  --memora-brand-900: #22401a;
+
+  --memora-bg-page: #f7faf4;
+  --memora-bg-elevated: #edf3e7;
+  --memora-bg-subtle: #f7faf4;
+
+  --memora-text-primary: #172014;
+  --memora-text-secondary: #45503f;
+  --memora-text-muted: #5f6b5a;
+
+  --memora-border-subtle: #dfe8d6;
+  --memora-border-strong: #c9d6bd;
+
+  --memora-footer-bg: #0f1a0c;
+
+  --memora-shadow-brand: 0 12px 24px -4px rgba(63, 117, 36, 0.28);
+  --memora-shadow-brand-lg: 0 24px 48px -8px rgba(63, 117, 36, 0.38);
+}
+
+/* Caramelo: ámbar tostado, claro */
+[data-theme="caramelo"] {
+  color-scheme: light;
+
+  --memora-brand-50: #fdf5ec;
+  --memora-brand-100: #fae6d0;
+  --memora-brand-200: #f3cb9f;
+  --memora-brand-300: #e9a964;
+  --memora-brand-400: #d98a3d;
+  --memora-brand-500: #b8621c;
+  --memora-brand-600: #9c5016;
+  --memora-brand-700: #7e4114;
+  --memora-brand-800: #683614;
+  --memora-brand-900: #542c12;
+
+  --memora-bg-page: #fcf8f3;
+  --memora-bg-elevated: #f6eee4;
+  --memora-bg-subtle: #fcf8f3;
+
+  --memora-text-primary: #24180f;
+  --memora-text-secondary: #54483d;
+  --memora-text-muted: #6f6255;
+
+  --memora-border-subtle: #eee3d6;
+  --memora-border-strong: #e0d0bd;
+
+  --memora-footer-bg: #1d130b;
+
+  --memora-shadow-brand: 0 12px 24px -4px rgba(156, 80, 22, 0.28);
+  --memora-shadow-brand-lg: 0 24px 48px -8px rgba(156, 80, 22, 0.38);
+}
+
+/* Espresso: café y crema, oscuro (activa también la variante dark:) */
+[data-theme="espresso"] {
+  color-scheme: dark;
+
+  --memora-brand-50: #faf4ee;
+  --memora-brand-100: #f2e5d6;
+  --memora-brand-200: #e4cbae;
+  --memora-brand-300: #d4ad84;
+  --memora-brand-400: #c08f5f;
+  --memora-brand-500: #a8723f;
+  --memora-brand-600: #8f5d31;
+  --memora-brand-700: #734a28;
+  --memora-brand-800: #5c3c23;
+  --memora-brand-900: #46301f;
+
+  --memora-bg-page: #13100d;
+  --memora-bg-surface: #1c1713;
+  --memora-bg-elevated: #25201a;
+  --memora-bg-subtle: #2b251e;
+
+  --memora-text-primary: #f7f1ea;
+  --memora-text-secondary: #d6cabd;
+  --memora-text-muted: #a89a8b;
+  --memora-text-inverse: #1c1713;
+
+  --memora-border-subtle: #2f2820;
+  --memora-border-strong: #3b3229;
+
+  --memora-glass-bg: rgba(19, 16, 13, 0.85);
+  --memora-glass-border: rgba(59, 50, 41, 0.75);
+
+  --memora-footer-bg: #0c0907;
+
+  --memora-shadow-sm: 0 4px 12px -2px rgba(0, 0, 0, 0.4);
+  --memora-shadow-md: 0 12px 24px -6px rgba(0, 0, 0, 0.5);
+  --memora-shadow-lg: 0 20px 32px -8px rgba(0, 0, 0, 0.6);
+  --memora-shadow-brand: 0 12px 28px -4px rgba(143, 93, 49, 0.4);
+  --memora-shadow-brand-lg: 0 24px 52px -8px rgba(143, 93, 49, 0.55);
 
   --memora-accent-pink-soft: #2b1b29;
   --memora-accent-pink-border: #3d2338;
@@ -341,5 +460,5 @@
   }
 }
 
-/* Variante dark: sigue a data-theme / .dark de <html> */
-@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+/* Variante dark: la activan los temas oscuros (dark y espresso) o .dark en <html> */
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *, [data-theme="espresso"], [data-theme="espresso"] *));

@@ -45,6 +45,46 @@
   --radius-box: var(--memora-radius-2xl);
 }
 
+/* Temas de color (D3): mismos enlaces a --memora-*, que cambian en tokens.css */
+@plugin "daisyui/theme" {
+  name: "matcha";
+  color-scheme: light;
+  --color-primary: var(--memora-brand-600);
+  --color-primary-content: #ffffff;
+  --color-base-100: var(--memora-bg-surface);
+  --color-base-200: var(--memora-bg-page);
+  --color-base-300: var(--memora-bg-elevated);
+  --color-base-content: var(--memora-text-primary);
+  --radius-field: var(--memora-radius-md);
+  --radius-box: var(--memora-radius-2xl);
+}
+
+@plugin "daisyui/theme" {
+  name: "caramelo";
+  color-scheme: light;
+  --color-primary: var(--memora-brand-600);
+  --color-primary-content: #ffffff;
+  --color-base-100: var(--memora-bg-surface);
+  --color-base-200: var(--memora-bg-page);
+  --color-base-300: var(--memora-bg-elevated);
+  --color-base-content: var(--memora-text-primary);
+  --radius-field: var(--memora-radius-md);
+  --radius-box: var(--memora-radius-2xl);
+}
+
+@plugin "daisyui/theme" {
+  name: "espresso";
+  color-scheme: dark;
+  --color-primary: var(--memora-brand-600);
+  --color-primary-content: #ffffff;
+  --color-base-100: var(--memora-bg-surface);
+  --color-base-200: var(--memora-bg-page);
+  --color-base-300: var(--memora-bg-elevated);
+  --color-base-content: var(--memora-text-primary);
+  --radius-field: var(--memora-radius-md);
+  --radius-box: var(--memora-radius-2xl);
+}
+
 /* Estilos generales */
 @layer base {
   body {

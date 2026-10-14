@@ -1,6 +1,6 @@
 # Memora · Laboratorio Módulo 01 (Layout + Tailwind CSS)
 
-Landing page de **Memora** maquetada con **Tailwind CSS v4** y **daisyUI 5**, responsive (móvil → escritorio) y con modo claro / oscuro.
+Landing page de **Memora** maquetada con **Tailwind CSS v4** y **daisyUI 5**, responsive (móvil → escritorio) y con cinco temas de color (claro, oscuro, matcha, caramelo y espresso) que se eligen desde el header.
 
 ## 1. Tema elegido: 🅱️ UI del TFM
 
@@ -29,22 +29,23 @@ Toda la configuración está **en el CSS**, como pide la v4: `@import "tailwindc
 
 ### Organización del CSS
 
-| Archivo                                     | Qué contiene                                                                                                                                                                      |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [tokens.css](src/styles/tokens.css)         | Variables `--memora-*` (claro y oscuro) y `@theme`, que las convierte en clases (`bg-brand-600`, `text-fg`, `shadow-brand`…). También la animación `fade-up` y la variante `dark` |
-| [main.css](src/styles/main.css)             | Entrada: Tailwind, daisyUI con los colores de Memora y estilos base                                                                                                               |
-| [components.css](src/styles/components.css) | Las pocas piezas que se repiten en el HTML sin plantilla (ver D4)                                                                                                                 |
-| [utilities.css](src/styles/utilities.css)   | Utilidades propias con `@utility`                                                                                                                                                 |
+| Archivo                                     | Qué contiene                                                                                                                                                                                                             |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [tokens.css](src/styles/tokens.css)         | Variables `--memora-*` (claro, oscuro y los temas matcha, caramelo y espresso) y `@theme`, que las convierte en clases (`bg-brand-600`, `text-fg`, `shadow-brand`…). También la animación `fade-up` y la variante `dark` |
+| [main.css](src/styles/main.css)             | Entrada: Tailwind, daisyUI con los colores de Memora (un tema de daisyUI por cada tema) y estilos base                                                                                                                   |
+| [components.css](src/styles/components.css) | Las pocas piezas que se repiten en el HTML sin plantilla (ver D4)                                                                                                                                                        |
+| [utilities.css](src/styles/utilities.css)   | Utilidades propias con `@utility`                                                                                                                                                                                        |
 
 Las secciones que aparecen una sola vez llevan las clases directamente en [index.html](index.html). Las piezas que se repiten (cards, acordeón, filas de miembros…) son funciones en [src/components/](src/components/) que reciben datos de [src/data/](src/data/) y llevan sus clases en la plantilla.
 
 ### daisyUI
 
-Lo usamos durante el curso, así que lo he aprovechado aquí, siempre conectado a mis tokens (los temas `light` / `dark` de daisyUI leen las variables `--memora-*`):
+Lo usamos durante el curso, así que lo he aprovechado aquí, siempre conectado a mis tokens (los temas de daisyUI `light`, `dark`, `matcha`, `caramelo` y `espresso` leen las variables `--memora-*`):
 
 | Componente                     | Dónde                                                                 |
 | ------------------------------ | --------------------------------------------------------------------- |
 | `btn`                          | Header, hero, precios, "Me gusta", newsletter, volver arriba          |
+| `dropdown` (sobre `<details>`) | Selector de tema del header                                           |
 | `badge`                        | Chips de las cards de álbum, "Más popular", "RAW & EXIF", nº de fotos |
 | `card`                         | Tarjeta "Viaje a Lisboa · 100%" del hero                              |
 | `progress`                     | Barra de esa misma tarjeta                                            |
@@ -61,9 +62,15 @@ Lo usamos durante el curso, así que lo he aprovechado aquí, siempre conectado 
 | <img src="docs/screenshots/movil-claro.png" alt="Landing en móvil, modo claro" width="200">   | <img src="docs/screenshots/escritorio-claro.png" alt="Landing en escritorio, modo claro" width="500">   |
 | <img src="docs/screenshots/movil-oscuro.png" alt="Landing en móvil, modo oscuro" width="200"> | <img src="docs/screenshots/escritorio-oscuro.png" alt="Landing en escritorio, modo oscuro" width="500"> |
 
+#### Temas de color (D3)
+
+| Selector (móvil)                                                                                          | Matcha                                                                                          | Caramelo                                                                                            | Espresso                                                                                            |
+| --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| <img src="docs/screenshots/selector-tema.png" alt="Desplegable del selector de tema abierto" width="200"> | <img src="docs/screenshots/escritorio-matcha.png" alt="Landing con el tema matcha" width="200"> | <img src="docs/screenshots/escritorio-caramelo.png" alt="Landing con el tema caramelo" width="200"> | <img src="docs/screenshots/escritorio-espresso.png" alt="Landing con el tema espresso" width="200"> |
+
 ### Lighthouse
 
-Sobre la versión de producción (`npm run build` + `npm run preview`), en modo claro y oscuro:
+Sobre la versión de producción (`npm run build` + `npm run preview`). Accesibilidad, Buenas prácticas y SEO dan 100 en los **cinco temas**, en móvil y en escritorio:
 
 |            | Rendimiento | Accesibilidad | Buenas prácticas | SEO     |
 | ---------- | ----------- | ------------- | ---------------- | ------- |
@@ -80,17 +87,17 @@ En móvil, el rendimiento baja sobre todo por el tiempo de primera pintura (las 
 - [x] **O2 · `@theme`**: marca `brand` (50-900), acentos `pink`, `peach` y `mint`, tipografía _Plus Jakarta Sans_ para títulos e _Inter_ para texto. Ningún color a pelo: hasta las estrellas (`bg-rating`) y el corazón (`text-heart`) son tokens.
 - [x] **O3 · Cabecera con flexbox**: logo a la izquierda, menú y acciones a la derecha. En móvil el menú pasa a un panel desplegable. Enlaces con `hover:` y `focus-visible:`.
 - [x] **O4 · Hero**: titular, texto (`max-w-xl`), dos botones e imagen. Una columna en móvil y `md:grid-cols-[5fr_6fr]` desde `md:`. Uso grid y no flex porque quiero controlar la proporción exacta de las dos columnas.
-- [ ] **O5 · Rejilla de tarjetas**: cumplido en parte (ver nota).
+- [x] **O5 · Rejilla de tarjetas**: cumplido en diferentes secciones (ver nota).
 - [x] **O6 · Pasos con flexbox**: "Cómo funciona" (4 pasos) con `flex flex-col md:flex-row` y el contenido de cada paso centrado.
 - [x] **O7 · Pie**: 4 bloques en escritorio (marca, producto, ayuda, newsletter) que se apilan en móvil. Copyright separado con `border-t`.
 - [x] **O8 · Accesibilidad**: todo se usa con teclado y tiene `focus-visible` visible. Lighthouse 100 en accesibilidad, en claro y en oscuro.
 - [x] **O9 · README + bitácora**
 
-> **Nota sobre O5.** Las tarjetas de **precios** tienen imagen (`aspect-2/1` + `object-cover`), título, texto, precio, botón y hover con `transition`. Las de **funciones** son 6, en grid de 2 y 3 columnas. Ninguna de las dos secciones cumple todo a la vez: los precios son 3 tarjetas, y las funciones no tienen imagen ni precio porque en el diseño de Memora son tarjetas informativas. Probé a añadir foto, dato y botón a las funciones, pero la sección dejaba de tener sentido, así que preferí mantener el diseño, dividiendo los requisitos.
+> **Nota sobre O5.** Las tarjetas de **precios** tienen imagen (`aspect-2/1` + `object-cover`), título, texto, precio, botón y hover con `transition`. Las de **funciones** son 6, en grid de 2 y 3 columnas. Ninguna de las dos secciones cumple todo a la vez: los precios son 3 tarjetas, y las funciones no tienen imagen ni precio porque en el diseño de Memora son tarjetas informativas. Probé a añadir foto, dato y botón a las funciones, pero la sección dejaba de tener sentido, así que preferí mantener el diseño, dividiendo los requisitos entre esas dos secciones.
 
 ### ⭐ Opcionales
 
-- [x] **P1 · Modo oscuro con botón**: `@custom-variant dark` sobre `data-theme="dark"`. Al entrar sigue la preferencia del sistema y guarda la elección en `localStorage`.
+- [x] **P1 · Modo oscuro con botón**: `@custom-variant dark` sobre `data-theme="dark"` (y `espresso`, que también es oscuro). Se elige desde el selector de tema del header (pincel). Al entrar sigue la preferencia del sistema y guarda la elección en `localStorage`.
 - [x] **P2 · Cabecera fija con efecto cristal**: `sticky top-0 z-50 backdrop-blur-glass bg-glass` (explicación abajo).
 - [x] **P3 · Plan destacado**: "Plus" con borde de marca, sombra de color y etiqueta "Más popular" colocada con `absolute` sobre la tarjeta (`relative` en el padre).
 - [x] **P4 · FAQ sin JavaScript**: `<details>` + `<summary>`, con la flecha girando gracias a `group` + `group-open:rotate-180`.
@@ -102,7 +109,7 @@ En móvil, el rendimiento baja sobre todo por el tiempo de primera pintura (las 
 
 - [ ] **D1 · Menú hamburguesa sin JS**: hay menú hamburguesa, pero usa un poco de JS para gestionar `aria-expanded`.
 - [x] **D2 · Container queries** (explicación abajo).
-- [ ] **D3 · Multitema**
+- [x] **D3 · Multitema**: matcha, caramelo y espresso, además de claro y oscuro (explicación abajo).
 - [x] **D4 · Utilidades propias** (explicación abajo).
 - [ ] **D5 · Layout de aplicación**
 - [ ] **D6 · De captura a código**
@@ -126,6 +133,26 @@ La card de álbum ([circleMainCard.js](src/components/cards/circleMainCard.js)) 
 - **Ancha** (`@lg:`, el álbum "Lisboa 2026" del bento): foto panorámica y título grande.
 
 Es la **misma función con los mismos datos**, colocada en una columna estrecha (hero) y en una ancha (bento).
+
+### D3 · Multitema
+
+Hay cinco temas: **Claro**, **Oscuro**, **Matcha** (verde), **Caramelo** (ámbar tostado) y **Espresso** (café y crema, oscuro).
+
+**Cómo funciona:**
+
+- Cada tema es un bloque `[data-theme="matcha"] { … }` en [tokens.css](src/styles/tokens.css) que solo redefine variables `--memora-*`: la escala `brand` (50-900), fondos, textos, bordes, el fondo del footer y las sombras de color.
+- Las clases de Tailwind ya apuntan a esas variables (`--color-brand-600: var(--memora-brand-600)` en `@theme`), así que `bg-brand-600` cambia de color sin tocar el HTML. **Al cambiar de tema solo cambia el atributo `data-theme` de `<html>`.**
+- daisyUI tiene un tema con el mismo nombre para cada uno ([main.css](src/styles/main.css)), conectado a las mismas variables, para que `btn-primary`, `badge`, `tabs`… también cambien.
+- **Espresso** es oscuro, así que lo he añadido a la variante `dark:`. Así reutiliza los ajustes del modo oscuro (`dark:text-brand-300`…) con sus propios colores.
+
+**El selector:** el botón del header con un **pincel** abre un desplegable (`dropdown` de daisyUI sobre `<details>`) con un radio por tema:
+
+- Las opciones salen de [themes.js](src/data/themes.js) y del componente [themeOption.js](src/components/ui/themeOption.js), como el resto de piezas repetidas.
+- Son radios de verdad dentro de un `<fieldset>`, así que con teclado se cambia de tema con las flechas. El foco se ve en la opción con `has-focus-visible:`, y la marcada se resalta con `has-checked:` y `peer-checked:`.
+- Cada opción tiene una muestra con los colores de su tema. La muestra lleva su propio `data-theme` y lee las variables directamente (`bg-(--memora-brand-500)`), así que no hace falta escribir ningún color en el HTML. Para que funcione, los valores base se aplican a `:root` y a cualquier `[data-theme]`, y cada tema sobrescribe solo lo suyo.
+- [theme.js](src/scripts/theme.js) cambia el atributo, guarda la elección en `localStorage` y cierra el desplegable al hacer clic fuera o con `Escape`. Un pequeño script en el `<head>` aplica el tema guardado antes de pintar para que no parpadee el tema claro al recargar.
+
+Comprobé el contraste de cada paleta con un script antes de pasar Lighthouse: el texto blanco sobre `brand-600` y `brand-600` sobre los fondos superan 4,5:1 en todos los temas. El logo es un SVG con los colores de la marca y no cambia con el tema.
 
 ### D4 · Utilidades propias y `@apply`
 
@@ -151,7 +178,7 @@ En [utilities.css](src/styles/utilities.css) hay dos `@utility`:
 
 #### Prompt
 
-"Se supone que las cards de 'funciones', 'cómo funciona' o 'precios' ya estaban pensadas para cubrir este punto. ¿Podrías cambiar una de estas secciones para que encaje con lo que se pide, sin estropear nada?"
+"Se supone que las cards de 'funciones', 'cómo funciona' o 'precios' ya estaban pensadas para cubrir este punto. Podrías cambiar una de estas secciones para que encaje con lo que se pide, sin estropear nada?"
 
 #### Qué me dio
 
@@ -159,13 +186,13 @@ Eligió "Funciones" y le añadió a cada tarjeta una foto de stock, un "dato des
 
 #### Qué corregí y por qué
 
-Le pedí que lo deshiciera. Prefiero no cumplir un punto al 100 % antes que tener una web incoherente. Después probé por mi cuenta a poner **solo una imagen** en las tarjetas de precios, que sí encajaba con el diseño, y la ajusté: más baja (`aspect-2/1`) y uniendo dos líneas del plan Pro para que las tarjetas no crecieran tanto.
+Le pedí que lo deshiciera. Prefiero no cumplir un punto al 100 % antes que tener una web incoherente (de todas formas, he dividido el requisito en dos secciones de manera en que cumpla igualmente). Después probé por mi cuenta a poner **solo una imagen** en las tarjetas de precios, que sí encajaba con el diseño, y la ajusté: más baja (`aspect-2/1`) y uniendo dos líneas del plan Pro para que las tarjetas no crecieran tanto.
 
 ### 2. Quitar el abuso de `@apply`
 
 #### Prompt
 
-"¿Cómo podrías maquetarlo entonces si no usas `@apply`? Supongo que podrías usar sencillamente esas clases de Tailwind en el propio componente en caso de que ese componente no se repita. Hazlo. Que quede ordenado y presentable."
+"Podrías eliminar el abuso de `@apply` usando esas clases de Tailwind en el propio componente en caso de que ese componente no se repita? Consigue que quede ordenado y presentable."
 
 #### Qué me dio
 
@@ -193,7 +220,7 @@ Pedí un efecto más suave: `transition-[box-shadow,translate] duration-500 ease
 
 #### Prompt
 
-"En el bento, ¿podrías hacer que la primera fila no tuviera tanta altura? La primera card se está estirando de manera rara."
+"En el bento, podrías hacer que la primera fila no tuviera tanta altura? La primera card se está estirando de manera rara."
 
 #### Qué me dio
 
@@ -207,7 +234,7 @@ En escritorio la imagen pasa a `lg:absolute lg:inset-0` dentro de un `figure` co
 
 #### Prompt
 
-"¿Podrías pasar el Lighthouse?"
+"Podrías pasar el Lighthouse en modo oscuro?"
 
 #### Qué me dio
 

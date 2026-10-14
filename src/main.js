@@ -9,9 +9,11 @@ import { originalInfo } from "./data/infoCards.js";
 import { heroCommunity } from "./data/members.js";
 import { billingPeriods, plans } from "./data/plans.js";
 import { steps } from "./data/steps.js";
+import { themes } from "./data/themes.js";
 
 import { avatarGroup } from "./components/ui/avatarGroup.js";
 import { billingToggle } from "./components/ui/billingToggle.js";
+import { themeOption } from "./components/ui/themeOption.js";
 import { circleMainCard } from "./components/cards/circleMainCard.js";
 import { circleMembersCard } from "./components/cards/circleMembersCard.js";
 import { faqItem } from "./components/cards/faqItem.js";
@@ -26,6 +28,9 @@ import { initNavMenu } from "./scripts/navMenu.js";
 import { initNewsletter } from "./scripts/newsletter.js";
 import { initPressToggles } from "./scripts/pressToggle.js";
 import { initTheme } from "./scripts/theme.js";
+
+// Header: opciones del selector de tema
+render("#theme-options", themes, themeOption);
 
 // Hero
 render("#hero-avatars", [heroCommunity], ({ people, extra }) =>
@@ -65,7 +70,7 @@ render("#plans-list", plans, pricingCard);
 render("#faqs-list", faqs, faqItem);
 
 // Interacciones
-initTheme();
+initTheme(themes.map(({ id }) => id));
 initNavMenu();
 initPressToggles("[data-press-toggle]");
 initBillingToggle();
